@@ -23,12 +23,12 @@ public class MyEdgeBuilder extends NodeBuilder {
 	 */
 	@BuilderMethod
 	public void rootEdges() {
-		//Example:
-		//var root = get(NodeLabels.root.toString());
-		//var choice = new MenuChoice(MenuChoice.Options.Start);
-		//var nextNode = get(NodeLabels.atCottage.toString());
-		//root.add(new Edge(choice, nextNode));
+		var node = get(MyNodeLabels.root.toString());
+		var nextNode = get(MyNodeLabels.Town.toString());
+		var choice = new PlayerInteraction(ChoiceLabels.GoToCity.toString(), npc1, Icons.talk, "Head into the city to get money, you look broke.");
+		node.add(new Edge(choice, nextNode));
 	}
+	
 	@BuilderMethod
 	public void atTown() {
 		var node = get(NodeLabels.atCottage.toString());
