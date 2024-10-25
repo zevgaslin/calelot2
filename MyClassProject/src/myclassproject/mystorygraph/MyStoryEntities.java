@@ -19,7 +19,7 @@ public final class MyStoryEntities {
 	//e.g. public static final Characters player = new Characters("Player", BodyTypes.D, Clothing.Peasant, HairStyle.Short, Colors.Black, 6);
 	//You can access these instances in your EdgeBuilder and NodeBuilder classes by importing:
 	//import static myclassproject.mystorygraph.MyStoryEntities.*;
-	
+
 
 	public static final Place town = new Place("Town", PlaceTypes.Camp);
 	public static final Place farm = new Place("Farm", PlaceTypes.Farm);
