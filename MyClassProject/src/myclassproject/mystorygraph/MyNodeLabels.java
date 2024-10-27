@@ -2,13 +2,16 @@ package myclassproject.mystorygraph;
 
 //Fill this enum with the labels you chose for the NODES of your story graph.
 public enum MyNodeLabels{
-	root,
-	Town,
-	TownGeneralStore,
-	Twinkie,
-	Apple,
-	VerySourGrapes,
+	root,//All Choices Made
+	Town,//All Choices Made
+	TownGeneralStore,// All Choices Made
+	Twinkie,//All Choices Made
+	Apple,//All Choices Made
+	VerySourGrapes,//All Choices Made
 	GeneralStore,
+	Twinkie1,
+	Apple1,
+	VerySourGrapes1,
 	BeggingSpot,
 	Fight,
 	BegForCoins,
