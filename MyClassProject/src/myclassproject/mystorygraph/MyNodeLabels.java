@@ -19,7 +19,7 @@ public enum MyNodeLabels{
 	YouDiedTown,
 	Gate,
 	Pay,
-	City,
+	City,//All Choices Made
 	FightPrisoner,
 	Blacksmith,
 	Upgrade,

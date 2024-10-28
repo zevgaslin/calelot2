@@ -110,11 +110,7 @@ node.add(new Draw(merchant,bread));
 node.add(new Take(merchant,coin,player));
 node.add(new Take(player,bread,merchant));
 }
-@BuilderMethod
-public void Twinkie() { 	// Experimenting With Edges-JOsh	
-var node = get(MyNodeLabels.Twinkie.toString());
-node.add(new NarrationSequence(""));
-}
+
 @BuilderMethod
 public void BlacksmithActions() {
 var node = get(MyNodeLabels.Blacksmith.toString());
