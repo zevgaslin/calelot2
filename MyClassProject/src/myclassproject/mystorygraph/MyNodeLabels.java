@@ -16,43 +16,43 @@ public enum MyNodeLabels{
 	Fight, //All Choices Made
 	BegForCoins, //All Choices Made
 	AttemptPickPocket, //All Choices Made
-	YouDiedTown, 
-	Gate,
-	Pay,
+	YouDiedTown, //unneeded
+	Gate,//All Choices Made
+	Pay,//All Choices Made
 	City,//All Choices Made
-	FightPrisoner,
-	Blacksmith,
-	Upgrade,
-	Dungeon,
-	YouDiedCity,
-	FightTheGuard,
-	MainHall,
-	Alchemy,
-	GetBook,
-	CastleGate,
-	BribeTheGuard1,
-	MainHallUnsafe,
-	BribeTheGuard2,
-	MainHallUnsafe2,
-	BribeTheGuard3,
-	MainHallUnsafe3,
-	BribeTheGuard4,
-	ThroneRoom,
-	Forest,
-	Fountain,
-	LoudAndObnoxiousTree,
-	InfiniteGold,
-	LookThroughSpyglass,
-	GrabHim,
-	Dock,
-	PirateFight,
-	No,
-	Arg,
-	PirateEnding,
-	TooBad,
-	FightKing,
-	BuyYourLandBack,
-	LandEnding,
-	BuyKingdom,
-	KindomEnding
+	FightPrisoner,//All Choices Made
+	Blacksmith,//All Choices Made
+	Upgrade,//All Choices Made
+	Dungeon,//All Choices Made
+	YouDiedCity,//unneeded
+	FightTheGuard, //All Choices Made
+	MainHall, //unneeded
+	Alchemy, //All Choices Made
+	GetBook, //All Choices Made
+	CastleGate,//All Choices Made
+	BribeTheGuard1,//All Choices Made
+	MainHallUnsafe,//All Choices Made
+	BribeTheGuard2,//All Choices Made
+	MainHallUnsafe2,//All Choices Made
+	BribeTheGuard3,//All Choices Made
+	MainHallUnsafe3,//All Choices Made
+	BribeTheGuard4,//All Choices Made
+	ThroneRoom,//All Choices Made
+	Forest,//All Choices Made
+	Fountain,//All Choices Made
+	LoudAndObnoxiousTree,//All Choices Made
+	InfiniteGold,//All Choices Made
+	LookThroughSpyglass,//unneeded
+	GrabHim,//unneeded
+	Dock,//All Choices Made
+	PirateFight,//All Choices Made
+	No,//All Choices Made
+	Arg,//All Choices Made
+	PirateEnding,//unneeded
+	TooBad,//unneeded
+	FightKing,//All Choices Made
+	BuyYourLandBack,//All Choices Made
+	LandEnding,//All Choices Made
+	BuyKingdom,//All Choices Made
+	KindomEnding //All Choices Made
 }

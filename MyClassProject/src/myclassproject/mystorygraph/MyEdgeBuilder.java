@@ -22,6 +22,9 @@ public class MyEdgeBuilder extends NodeBuilder {
 	 * These methods must have a BuilderMethod annotation.
 	 */
 	@BuilderMethod
+	
+	//Zev Gaslin Code
+	
 	public void root() {
 		Example:
 		var root = get(NodeLabels.root.toString());
@@ -77,6 +80,8 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode2 = get(NodeLabels.TownGeneralStore.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	
+	//Joshua Haddad Code
 	@BuilderMethod
 	public void Twinkie() {
 		var node = get(NodeLabels.Twinkie.toString());
@@ -89,6 +94,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode2 = get(NodeLabels.TownGeneralStore.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	//Zev Gaslin Code
 	@BuilderMethod
 	public void VerySourGrapes() {
 		var node = get(NodeLabels.VerySourGrapes.toString());
@@ -157,6 +163,8 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode2 = get(NodeLabels.GeneralStore.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	
+	//Joshua Haddad Code
 	public void atGate() {
 		var node = get(NodeLabels.Gate.toString());
 		
@@ -273,7 +281,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		
 	}
 
-	
+	//Jaedan Curcio Code
 	@BuilderMethod
 	public void BeggingSpot() {
 		var node = get(NodeLabels.BeggingSpot.toString());
@@ -397,6 +405,8 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode1 = get(NodeLabels.InfiniteGold.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	
+	//Zev Gaslin Code
 	@BuilderMethod
 	public void InfiniteGold() {
 		var node = get(NodeLabels.Fountain.toString());
@@ -427,6 +437,8 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode2 = get(NodeLabels.AtDocks.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	
+	//Jaedan Curcio Code
 	public void CastleGate() {
 		var node = get(NodeLabels.CastleGate.toString());
 		
