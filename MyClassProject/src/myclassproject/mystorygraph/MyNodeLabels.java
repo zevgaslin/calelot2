@@ -8,15 +8,15 @@ public enum MyNodeLabels{
 	Twinkie,//All Choices Made
 	Apple,//All Choices Made
 	VerySourGrapes,//All Choices Made
-	GeneralStore,
-	Twinkie1,
-	Apple1,
-	VerySourGrapes1,
-	BeggingSpot,
-	Fight,
-	BegForCoins,
-	AttemptPickPocket,
-	YouDiedTown,
+	GeneralStore, //All Choices Made
+	Twinkie1,//All Choices Made
+	Apple1,//All Choices Made
+	VerySourGrapes1,//All Choices Made
+	BeggingSpot, //All Choices Made
+	Fight, //All Choices Made
+	BegForCoins, //All Choices Made
+	AttemptPickPocket, //All Choices Made
+	YouDiedTown, 
 	Gate,
 	Pay,
 	City,//All Choices Made
