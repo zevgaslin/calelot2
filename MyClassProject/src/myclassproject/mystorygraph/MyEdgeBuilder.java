@@ -101,6 +101,62 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode2 = get(NodeLabels.TownGeneralStore.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	@BuilderMethod
+	public void GeneralStore() {
+		var node = get(NodeLabels.GeneralStoreActions.toString());
+
+		var choice1 = new PlayerInteraction(ChoiceLabels.Apple.toString(), storageBarrel , Icons.apple, "Purchase Apple ");
+		var nextNode1 = get(NodeLabels.Apple1.toString());
+		node.add(new Edge(choice1, nextNode1));
+
+		var choice2 = new PlayerInteraction(ChoiceLabels.Twinkie.toString(), storageChest, Icons.bread, "Purchase Twinkie");
+		var nextNode2 = get(NodeLabels.Twinkie1.toString());
+		node.add(new Edge(choice2, nextNode2));
+		
+		var choice3 = new PlayerInteraction(ChoiceLabels.VerySourGrapes.toString(), storageShelf, Icons.skulls, "Purchase Very Sour Grapes");
+		var nextNode3 = get(NodeLabels.VerySourGrapes1.toString());
+		node.add(new Edge(choice3, nextNode3));
+		
+		var choice4 = new PlayerInteraction(ChoiceLabels.Town.toString(), storageDoor, Icons.exit, "Exit Store");
+		var nextNode4 = get(NodeLabels.City.toString());
+		node.add(new Edge(choice4, nextNode4));
+	}
+	@BuilderMethod
+	public void Apple1() {
+		var node = get(NodeLabels.Apple.toString());
+		
+		var choice1 = new DialogChoice("Purchase");
+		var nextNode1 = get(NodeLabels.TownGeneralStore.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Do not Purchase");
+		var nextNode2 = get(NodeLabels.TownGeneralStore.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void Twinkie1() {
+		var node = get(NodeLabels.Twinkie.toString());
+		
+		var choice1 = new DialogChoice("Purchase");
+		var nextNode1 = get(NodeLabels.GeneralStore.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Do not Purchase");
+		var nextNode2 = get(NodeLabels.GeneralStore.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void VerySourGrapes1() {
+		var node = get(NodeLabels.VerySourGrapes.toString());
+		
+		var choice1 = new DialogChoice("Purchase");
+		var nextNode1 = get(NodeLabels.GeneralStore.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Do not Purchase");
+		var nextNode2 = get(NodeLabels.GeneralStore.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
 	public void atGate() {
 		var node = get(NodeLabels.Gate.toString());
 		
