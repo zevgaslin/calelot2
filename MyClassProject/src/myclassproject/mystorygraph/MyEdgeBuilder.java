@@ -22,18 +22,18 @@ public class MyEdgeBuilder extends NodeBuilder {
 	 * These methods must have a BuilderMethod annotation.
 	 */
 	@BuilderMethod
-	public void rootEdges() {
-		//Example:
-		//var root = get(NodeLabels.root.toString());
-		//var choice = new MenuChoice(MenuChoice.Options.Start);
-		//var nextNode = get(NodeLabels.atCottage.toString());
-		//root.add(new Edge(choice, nextNode));
+	public void root() {
+		Example:
+		var root = get(NodeLabels.root.toString());
+		var choice = new MenuChoice(MenuChoice.Options.Start);
+		var nextNode = get(NodeLabels.Town.toString());
+		root.add(new Edge(choice, nextNode));
 	}
 	@BuilderMethod
 	public void atTown() {
 		var node = get(NodeLabels.Town.toString());
 
-		var choice1 = new CloseNarrationChoice(ChoiceLabels.Wall.toString(), campLog, Icons.coins, "Go to the Begging Spot");
+		var choice1 = new PlayerInteraction(ChoiceLabels.Wall.toString(), campLog, Icons.coins, "Go to the Begging Spot");
 		var nextNode1 = get(NodeLabels.BeggingSpot.toString());
 		node.add(new Edge(choice1, nextNode1));
 
@@ -57,7 +57,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode2 = get(NodeLabels.Twinkie.toString());
 		node.add(new Edge(choice2, nextNode2));
 		
-		var choice3 = new PlayerInteraction(ChoiceLabels.VerySourGrapes.toString(), storageShelf, Icons.chickenleg, "Purchase Very Sour Grapes");
+		var choice3 = new PlayerInteraction(ChoiceLabels.VerySourGrapes.toString(), storageShelf, Icons.skulls, "Purchase Very Sour Grapes");
 		var nextNode3 = get(NodeLabels.VerySourGrapes.toString());
 		node.add(new Edge(choice3, nextNode3));
 		
@@ -147,43 +147,81 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var node = get(NodeLabels.Dock.toString());
 
 		var choice1 = new DialogChoice("Yar!");
-		var nextNode1 = get(NodeLabels.PirateFightActions().toString());
+		var nextNode1 = get(NodeLabels.PirateFightActions.toString());
 		node.add(new Edge(choice1, nextNode1));
 
 		var choice2 = new DialogChoice("Nar...");
 		var nextNode2 = get(NodeLabels.No.toString());
 		node.add(new Edge(choice2, nextNode2));
 
-		var choice 3 = new DialogChoice("I have ye Parrot");
-		var nextNode2 = get(NodeLabels.PirateEnding.toString());
-		node.add(new Edge(choice2, nextNode2));
 	}
-	public void atDocks() {
+	public void atDocks1() {
 		var node = get(NodeLabels.Dock.toString());
 
-		var choice1 = new DialogChoice("Yar!");
-		var nextNode1 = get(NodeLabels.PirateFightActions().toString());
-		node.add(new Edge(choice1, nextNode1));
-
-		var choice2 = new DialogChoice("Nar...");
-		var nextNode2 = get(NodeLabels.No.toString());
-		node.add(new Edge(choice2, nextNode2));
-
 		var choice 3 = new DialogChoice("I have ye Parrot");
-		var nextNode2 = get(NodeLabels.PirateEnding.toString());
-		node.add(new Edge(choice2, nextNode2));
+		var nextNode3 = get(NodeLabels.PirateEnding.toString());
+		node.add(new Edge(choice3, nextNode2));
 	}
+
 	public void PirateFight() {
-		var choice = new MenuChoice(MenuChoice.Win.Lose);
-		var nextNode1 = get(NodeLabels.PirateFightActions().toString());
+			var node = get(NodeLabels.PirateFightActions.toString());
+
+			var choice1 = new DialogChoice("Do yee stab me");
+			var nextNode1 = get(NodeLabels.PirateEnding.toString());
+			node.add(new Edge(choice1, nextNode1));
+
+			var choice2 = new DialogChoice("Do yee surrender");
+			var nextNode2 = get(NodeLabels.City.toString());
+			node.add(new Edge(choice2, nextNode2));
+		}
+	public void No() {
+		var node = get(NodeLabels.No.toString());
+
+		var choice1 = new DialogChoice("Do yee want to be a pirate");
+		var nextNode1 = get(NodeLabels.Arg.toString());
 		node.add(new Edge(choice1, nextNode1));
 
-		var choice2 = new DialogChoice("Nar...");
-		var nextNode2 = get(NodeLabels.No.toString());
+		var choice2 = new DialogChoice("No");
+		var nextNode2 = get(NodeLabels.Docs.toString());
 		node.add(new Edge(choice2, nextNode2));
+	}
+	public void Arg() {
+		var node = get(NodeLabels.Arg.toString());
+
+		var choice1 = new DialogChoice("Investigate the forest");
+		var nextNode1 = get(NodeLabels.Forest2.toString());
+		node.add(new Edge(choice1, nextNode1));
+
+		var choice2 = new DialogChoice("Go Home");
+		var nextNode2 = get(NodeLabels.Cty.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	
+	public void Dungeon() {
+		var node = get(NodeLabels.Dungeon.toString());
+		
+		var choice1 = new CloseNarrationChoice(ChoiceLabels.FightPrisoner.toString(), npc2, Icons.swords, "Hey, im going to fight you!!!");
+		var nextNode1 = get(NodeLabels.FightPrisoner.toString());
+		node.add(new Edge(choice1, nextNode1));
+
+		var choice2 = new PlayerInteraction(ChoiceLabels.Chair.toString(), dungeonChair, Icons.chair, "Sit");
+		var nextNode2 = get(NodeLabels.Dungeon.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	public void FightPrisoner() {
+		var node = get(NodeLabels.FightPrisonerActions.toString());
+		
+		var choice1 = new DialogChoice("Return to city");
+		var nextNode1 = get(NodeLabels.City.toString());
+		node.add(new Edge(choice1, nextNode1));
+
 		
 		
 	}
+	
+
+	
+	
 	
 	
 	
