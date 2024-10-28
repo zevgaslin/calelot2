@@ -214,11 +214,162 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var choice1 = new DialogChoice("Return to city");
 		var nextNode1 = get(NodeLabels.City.toString());
 		node.add(new Edge(choice1, nextNode1));
-
-		
 		
 	}
+
 	
+	@BuilderMethod
+	public void BeggingSpot() {
+		var node = get(NodeLabels.BeggingSpot.toString());
+		var nextNode1 = get(NodeLabels.BegForCoins.toString());
+		var choice1 = new PlayerInteraction(ChoiceLabels.BegForCoins.toString(), npc1, Icons.coins, "Beg For Coins");
+		node.add(new Edge(choice1, nextNode1));
+
+
+		var node = get(NodeLabels.BeggingSpot.toString());
+		var nextNode2 = get(NodeLabels.BegForCoins.toString());
+		var choice2  new PlayerInteraction(ChoiceLabels.PickPocket.toString(), npc1, Icons.mug, "Attempt pickpocket");
+		node.add(new Edge(choice2, nextNode2));
+		
+		var node = get(NodeLabels.BeggingSpot.toString());
+		var nextNode3 = get(NodeLabels.Fight.toString());
+		var choice3 = new PlayerInteraction(ChoiceLabels.Fight.toString(), npc1, Icons.sword, "Fight");
+		node.add(new Edge(choice3, nextNode3));
+		
+		var node = get(NodeLabels.BeggingSpot.toString());
+		var nextNode4 = get(NodeLabels.Leave.toString());
+		var choice4 = new PlayerInteraction(ChoiceLabels.Leave.toString(), npc1, Icons.exit, "Go back to town");
+		node.add(new Edge(choice4, nextNode4));
+	}
+	@BuilderMethod
+	public void BegForCoins() {
+		var node = get(NodeLabels.BegForCoins.toString());
+		
+		var choice1 = new DialogChoice("You got 10 coins. Return to begging spot.");
+		var nextNode1 = get(NodeLabels.BeggingSpot.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void AttemptPickPocket() {
+		var node = get(NodeLabels.AttemptPickPocket.toString());
+		
+		var choice1 = new DialogChoice("Pickpocket works. You get 20 coins");
+		var nextNode1 = get(NodeLabels.BeggingSpot.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Pickpocket doesn't work. Looks like you picked a fight.");
+		var nextNode2 = get(NodeLabels.Fight.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void Fight() {
+		var node = get(NodeLabels.Fight.toString());
+		
+		var choice1 = new DialogChoice("You won the fight! You tok 20 coins. Go back to the begging spot?");
+		var nextNode1 = get(NodeLabels.BeggingSpot.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("You lost the fight. :( Go to the dungeon now.");
+		var nextNode2 = get(NodeLabels.Dungeon.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void Blacksmith() {
+		var node = get(NodeLabels.Blacksmith.toString());
+		var nextNode = get(NodeLabels.Upgrade.toString());
+		var choice = new PlayerInteraction(ChoiceLabels.upgrade.toString(), blacksmith, Icons.forge, "Upgrade your weapon.");
+		node.add(new Edge(choice, nextNode));
+		
+		var choice4 = new PlayerInteraction(ChoiceLabels.Town.toString(), storageDoor, Icons.exit, "Exit Store");
+		var nextNode4 = get(NodeLabels.Town.toString());
+		node.add(new Edge(choice4, nextNode4));
+	}
+	@BuilderMethod
+	public void Upgrade() {
+		var node = get(NodeLabels.Upgrade.toString());
+		
+		var choice1 = new DialogChoice("Upgrade");
+		var nextNode1 = get(NodeLabels.Blacksmith.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Do not Upgrade");
+		var nextNode2 = get(NodeLabels.Blacksmith.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void Alchemy() {
+		var node = get(NodeLabels.Alchemy.toString());
+		var nextNode = get(NodeLabels.GetBook.toString());
+		var choice = new PlayerInteraction(ChoiceLabels.upgrade.toString(), alchemist, Icons.book, "Want this old book, its taking up space in my shop?");
+		node.add(new Edge(choice, nextNode));
+		var choice4 = new PlayerInteraction(ChoiceLabels.Town.toString(), storageDoor, Icons.exit, "Exit Store");
+		var nextNode4 = get(NodeLabels.Town.toString());
+		node.add(new Edge(choice4, nextNode4));
+		
+	}
+	@BuilderMethod
+	public void GetBook() {
+		var node = get(NodeLabels.GetBook.toString());
+		
+		var choice1 = new DialogChoice("Upgrade");
+		var nextNode1 = get(NodeLabels.Blacksmith.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Do not Upgrade");
+		var nextNode2 = get(NodeLabels.Blacksmith.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	
+	@BuilderMethod
+	public void Forest() {
+		var node = get(NodeLabels.Forest.toString());
+
+		var choice3 = new DialogChoice("As you enter the dark, magic forest on the outskirts of the city, you can’t help but shake the feeling that you are being watched by beings beyond your comprehension.");
+		var choice1 = new DialogChoice("Go to the Fountain?");
+		var nextNode1 = get(NodeLabels.Fountain.toString());
+		node.add(new Edge(choice1, nextNode1));
+		var choice2 = new DialogChoice("Go to the Loud and Obnoxious tree?");
+		var nextNode2 = get(NodeLabels.Tree.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void Fountain() {
+		var node = get(NodeLabels.Fountain.toString());
+		
+		var choice3 = new DialogChoice("You see a book shaped in the fountain. What do you choose to do?");
+		var choice1 = new DialogChoice("Put book in fountain");
+		var nextNode1 = get(NodeLabels.InfiniteGold.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void InfiniteGold() {
+		var node = get(NodeLabels.Fountain.toString());
+		
+		var choice1 = new DialogChoice("You place the book in the fountian and a stream of an uncountable number of gold coins comes streaming out. You recieve 10000000000 coins!!!!!!!");
+		var nextNode1 = get(NodeLabels.Forest.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void Forest2() {
+		var node = get(NodeLabels.Forest.toString());
+
+		var choice3 = new DialogChoice("You look around the forest to try adn find what the pirate was talkign about. You come across a Loud and Obnoxious tree.");
+		var choice2 = new DialogChoice("Go to the Loud and Obnoxious tree?");
+		var nextNode2 = get(NodeLabels.Tree.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void Tree() {
+		var node = get(NodeLabels.Tree.toString());
+
+		var choice3 = new DialogChoice("Lookign through the spyglass, you see a parrot flying up in the tree.");
+		var choice1 = new DialogChoice("Grab him?");
+		var nextNode1 = get(NodeLabels.AtDocks1.toString());
+		node.add(new Edge(choice1, nextNode1));
+		var choice2 = new DialogChoice("Go home?");
+		var nextNode2 = get(NodeLabels.AtDocks.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
 
 	
 	
