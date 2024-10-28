@@ -363,6 +363,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var node = get(NodeLabels.Tree.toString());
 
 		var choice3 = new DialogChoice("Lookign through the spyglass, you see a parrot flying up in the tree.");
+		
 		var choice1 = new DialogChoice("Grab him?");
 		var nextNode1 = get(NodeLabels.AtDocks1.toString());
 		node.add(new Edge(choice1, nextNode1));
@@ -370,6 +371,139 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode2 = get(NodeLabels.AtDocks.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	public void CastleGate() {
+		var node = get(NodeLabels.CastleGate.toString());
+		
+		var choice1 = new PlayerInteraction(ChoiceLabels.CastleGate.toString(), castleCrossroadsWestEnd, Icons.city, "Return to the City");
+		var nextNode1 = get(NodeLabels.City.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new PlayerInteraction(ChoiceLabels.CastleGate.toString(), gaurd, Icons.coins, "Bribe the Gaurd");
+		var nextNode2 = get(NodeLabels.BribeTheGaurd1.toString());
+		node.add(new Edge(choice2, nextNode2));
+		
+		var choice3 = new PlayerInteraction(ChoiceLabels.CastleGate.toString(), gaurd, Icons.draw, "Fight the Gaurd");
+		var nextNode3 = get(NodeLabels.FightTheGuard.toString());
+		node.add(new Edge(choice3, nextNode3));
+	}
+	
+	public void GuardFight() {
+		var node = get(NodeLabels.CastleGate.toString());
+		
+		var choice = new DialogChoice("You win!");
+		var nextNode = get(NodeLabels.ThroneRoom.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	public void GuardBribe1() {
+		var node = get(NodeLabels.BribeTheGuard1.toString());
+		
+		var choice = newDialogChoice("Progress to next room");
+		var nextNode = get(NodeLabels.MainHallUnsafe.toString());
+		
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	public void MainHall1() {
+		var node = get(NodeLabels.MainHallUnsafe.toString());
+		
+		var choice1 = new PlayerInteraction(ChoiceLabels.MainHallUnsafe.toString(), gaurd, Icons.coins, "Bribe the Gaurd");
+		var nextNode1 = get(NodeLabels.BribeTheGaurd2.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new PlayerInteraction(ChoiceLabels.MainHallUnsafe.toString(), gaurd, Icons.draw, "Fight the Gaurd");
+		var nextNode2 = get(NodeLabels.FightTheGuard.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	
+	public void GuardBribe2() {
+		var node = get(NodeLabels.BribeTheGuard2.toString());
+		
+		var choice = newDialogChoice("Progress to next room");
+		var nextNode = get(NodeLabels.MainHallUnsafe2.toString());
+		
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	public void MainHall2() {
+		var node = get(NodeLabels.MainHallUnsafe2.toString());
+		
+		var choice1 = new PlayerInteraction(ChoiceLabels.MainHallUnsafe2.toString(), gaurd, Icons.coins, "Bribe the Gaurd");
+		var nextNode1 = get(NodeLabels.BribeTheGaurd3.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new PlayerInteraction(ChoiceLabels.MainHallUnsafe2.toString(), gaurd, Icons.draw, "Fight the Gaurd");
+		var nextNode2 = get(NodeLabels.FightTheGuard.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	
+	public void GuardBribe3() {
+		var node = get(NodeLabels.BribeTheGuard3.toString());
+		
+		var choice = newDialogChoice("Progress to next room");
+		var nextNode = get(NodeLabels.MainHallUnsafe3.toString());
+		
+		node.add(new Edge(choice, nextNode));
+	}
+	public void MainHall3() {
+		var node = get(NodeLabels.MainHallUnsafe3.toString());
+		
+		var choice1 = new PlayerInteraction(ChoiceLabels.MainHallUnsafe3.toString(), gaurd, Icons.coins, "Bribe the Gaurd");
+		var nextNode1 = get(NodeLabels.BribeTheGaurd4.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new PlayerInteraction(ChoiceLabels.MainHallUnsafe3.toString(), gaurd, Icons.draw, "Fight the Gaurd");
+		var nextNode2 = get(NodeLabels.FightTheGuard.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	
+	public void GuardBribe4() {
+		var node = get(NodeLabels.BribeTheGuard4.toString());
+		
+		var choice = newDialogChoice("Progress to Throne Room");
+		var nextNode = get(NodeLabels.ThroneRoom.toString());
+		
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	public void atThroneRoom() {
+		var node = get(NodeLabels.ThroneRoom.toString());
+		
+		var choice1 = new PlayerInteraction(ChoiceLabels.ThroneRoom.toString(), king, Icons.coins, "Buy your land back");
+		var nextNode1 = get(NodeLabels.LandEnding.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new PlayerInteraction(ChoiceLabels.FightKing.toString(), king, Icons.draw, "Fight the King");
+		var nextNode2 = get(NodeLabels.FightKing.toString());
+		node.add(new Edge(choice2, nextNode2));
+		
+		var choice3 = new PlayerInteraction(ChoiceLabels.ThroneRoom.toString(), king, Icons.casgtle, "Buy the kingdom");
+		var nextNode3 = get(NodeLabels.BuyKingdom.toString());
+		node.add(new Edge(choice3, nextNode3));
+	   
+	
+	}
+	
+	public void KingFight() {
+		var node = get(NodeLabels.FightKing.toString());
+		
+		var choice1 = new DialogChoice("You won!");
+		var nextNode = get(NodeLabels.LandEnding());
+		
+		node.add(new Edge(choice1, nextNode));
+		
+	}
+	
+	public void BuyKingdom() {
+		var node = get(NodeLabels.BuyKingdom.toString());
+		var choice = new DialogChoice("Buy the Kingdom");
+		var nextNode = get(NodeLabels.KingdomEnding());
+		
+		node.add(new Edge(choice, nextNode));
+	}
+	
+	
+	
 
 	
 	
