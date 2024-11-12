@@ -54,5 +54,6 @@ public enum MyNodeLabels{
 	BuyYourLandBack,//All Choices Made
 	LandEnding,//All Choices Made
 	BuyKingdom,//All Choices Made
-	KindomEnding //All Choices Made
+	KindomEnding, //All Choices Made
+	GeneralStoreActions
 }
