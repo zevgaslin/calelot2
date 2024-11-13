@@ -16,6 +16,19 @@ public enum MyChoiceLabels {
 	Forest,
 	Blacksmith,
 	Docks,
-	Castle
+	Castle,
+	BeggingSpot,
+	FightPrisoner,
+	BegForCoins,
+	PickPocket,
+	Fight,
+	Leave,
+	Upgrade,
+	MainHallUnsafe3,
+	ThroneRoom,
+	FightKing,
+	CastleGate,
+	MainHallUnsafe,
+	MainHallUnsafe2
 }
 

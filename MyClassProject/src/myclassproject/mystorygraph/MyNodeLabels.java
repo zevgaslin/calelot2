@@ -45,6 +45,7 @@ public enum MyNodeLabels{
 	LookThroughSpyglass,//unneeded
 	GrabHim,//unneeded
 	Dock,//All Choices Made
+	Dock1,
 	PirateFight,//All Choices Made
 	No,//All Choices Made
 	Arg,//All Choices Made
@@ -55,5 +56,7 @@ public enum MyNodeLabels{
 	LandEnding,//All Choices Made
 	BuyKingdom,//All Choices Made
 	KindomEnding, //All Choices Made
-	GeneralStoreActions
-}
+	PirateFightActions,
+	Forest2,
+	FightPrisonerActions,
+	GeneralStoreAction,}

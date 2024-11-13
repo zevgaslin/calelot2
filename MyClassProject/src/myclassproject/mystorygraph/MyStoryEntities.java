@@ -42,6 +42,7 @@ public final class MyStoryEntities {
 	public static final Item apple = new Item("Apple", ItemTypes.Apple);
 	public static final Item bread = new Item("Bread", ItemTypes.Bread);
 	public static final Item grapes = new Item("Grapes", ItemTypes.PurplePotion);
+	public static final Item compass = new Item("Compass", ItemTypes.Compass);
 	public static final Characters player = new Characters("Player", BodyTypes.D, Clothing.Peasant, HairStyle.Short, Colors.Black, 6);
 	public static final Characters bandit = new Characters("Bandit", BodyTypes.F, Clothing.Bandit, HairStyle.Bald, Colors.Black, 4);
 	public static final Characters npc1 = new Characters("NPC1", BodyTypes.F, Clothing.Peasant, HairStyle.Spiky, Colors.Black, 4);
