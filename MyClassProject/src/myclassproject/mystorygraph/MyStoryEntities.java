@@ -27,7 +27,7 @@ public final class MyStoryEntities {
 	public static final Place dungeon = new Place("Dungeon", PlaceTypes.Dungeon);
 	public static final Place forestPath = new Place("ForestPath", PlaceTypes.ForestPath);
 	public static final Place ruins = new Place("Ruins", PlaceTypes.Ruins);
-	public static final Place alchemyShop = new Place("Port", PlaceTypes.Port);
+	public static final Place alchemyShop = new Place("AlchemyShop", PlaceTypes.AlchemyShop);
 	public static final Place blackSmith = new Place("BlackSmith", PlaceTypes.Blacksmith);
 	public static final Place castleCrossroads = new Place("CastleCrossroads", PlaceTypes.CastleCrossroads);
 	public static final Place hallway = new Place("Hallway", PlaceTypes.Hallway);
