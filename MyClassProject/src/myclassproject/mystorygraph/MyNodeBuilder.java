@@ -59,7 +59,7 @@ node.add(new NarrationSequence("You awaken in the small, poor town of Gregoria, 
 @BuilderMethod
 public void CityActions() {
 	var node = get(MyNodeLabels.City.toString());
-	node.add(new CreateAll(List.of(npc1, gaurd)));
+	//node.add(new CreateAll(List.of(npc1, gaurd)));
 	node.add(new NarrationSequence("As you pass through the pearly gates of the city, you are taken aback by the hustle and bustle of the beautiful Camelot City. You are excited by the prospect of exploring every corner of the mysterious new location, but you know you must focus on your ultimate goal; getting your land back.\n"));
 }
 //Jaedan Curcio
