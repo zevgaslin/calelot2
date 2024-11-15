@@ -24,7 +24,7 @@ public void rootActions() {
 //Example:
 var root = get(MyNodeLabels.root.toString());
 root.add(new CreateAll(List.of(farm, town, city, blackSmith,
-castleCrossroads, port, ruins, greatHall,forestPath,dungeon, alchemyShop, hallway, storage, bridge,sword,coin,evilBook,magnifyingGlass,apple,bread)))
+castleCrossroads, port, ruins, greatHall,forestPath,dungeon, alchemyShop, hallway, storage,sword,coin,evilBook,magnifyingGlass,apple)))
 .add(new CreateCharacterSequence(player))
 .add(new CreateCharacterSequence(bandit))
 .add(new CreateCharacterSequence(npc1))
@@ -35,14 +35,14 @@ castleCrossroads, port, ruins, greatHall,forestPath,dungeon, alchemyShop, hallwa
 .add(new CreateCharacterSequence(gaurd))
 .add(new CreateCharacterSequence(pirate))
 .add(new CreateCharacterSequence(merchant))
-.add(new SetPosition(player, farm))
+.add(new SetPosition(player, farm)) 
 .add(new SetPosition(bandit, dungeon))
 .add(new SetPosition(npc1, town))
 .add(new SetPosition(npc2, town))
 .add(new SetPosition(blacksmith, blackSmith))
 .add(new SetPosition(alchemist, alchemyShop))
 .add(new SetPosition(king, greatHall))
-.add(new SetPosition(gaurd, bridge))
+//.add(new SetPosition(gaurd, bridge))
 .add(new SetPosition(pirate, port))
 .add(new SetCameraFocus(player))
 .add(new SetPosition(merchant, storage))
@@ -91,9 +91,9 @@ node.add(new FadeIn());
 node.add(new Face(merchant,player));
 node.add(new Face(player,merchant));
 node.add(new Draw(player,coin));
-node.add(new Draw(merchant,bread));
+//node.add(new Draw(merchant,bread));
 node.add(new Take(merchant,coin,player));
-node.add(new Take(player,bread,merchant));
+//node.add(new Take(player,bread,merchant));
 }
 
 @BuilderMethod
@@ -145,7 +145,7 @@ node.add(new SetPosition(player, city));
 @BuilderMethod
 public void gateActions() {
 var node = get(MyNodeLabels.Gate.toString());
-node.add(new SetPosition(gaurd, bridge));
+//node.add(new SetPosition(gaurd, bridge));
 node.add(new NarrationSequence("You approach a decrepit gate at the edge of town. A large, burly man carrying a sword blocks the exit with his carriage. “Everyone who leaves this town has to go through me. For 20 coins, I’ll take you to the city. If you don’t, get out of my sight.” Do you pay, leave, or take your chances in a fight?"));
 node.add(new Face(gaurd,player));
 node.add(new Face(player,gaurd));
