@@ -24,8 +24,7 @@ public void rootActions() {
 //Example:
 var root = get(MyNodeLabels.root.toString());
 root.add(new CreateAll(List.of(farm, town, city, blackSmith,
-castleCrossroads, port, ruins, greatHall,forestPath,dungeon, alchemyShop, hallway,
-bridge, storage, bridge,sword,coin,evilBook,magnifyingGlass,apple,bread)))
+castleCrossroads, port, ruins, greatHall,forestPath,dungeon, alchemyShop, hallway, storage, bridge,sword,coin,evilBook,magnifyingGlass,apple,bread)))
 .add(new CreateCharacterSequence(player))
 .add(new CreateCharacterSequence(bandit))
 .add(new CreateCharacterSequence(npc1))
