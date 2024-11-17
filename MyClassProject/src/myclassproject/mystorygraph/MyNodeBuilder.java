@@ -46,7 +46,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void TownActions() {
 		var node = get(MyNodeLabels.Town.toString());
 		node.add(new HideMenu()).add(new EnableInput());
-		node.add(new NarrationSequence("You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidatedbuildings and broken people. You know what to do next. Where would you liketo go?"));
+		node.add(new NarrationSequence("TESTYou awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidatedbuildings and broken people. You know what to do next. Where would you liketo go?"));
 		
 	}
 
