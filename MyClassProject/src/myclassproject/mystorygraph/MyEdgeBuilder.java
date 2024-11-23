@@ -34,8 +34,15 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 	public void root() { 
 		var root = get(MyNodeLabels.root.toString());
 		var choice = new MenuChoice(MenuChoice.Options.Start);
-		var nextNode = get(MyNodeLabels.Town.toString());
+		var nextNode = get(MyNodeLabels.TownText.toString());
 		root.add(new Edge(choice, nextNode));
+	}
+	public void textForTown() {
+		var node = get(MyNodeLabels.TownText.toString());
+		var nextNode = get(MyNodeLabels.Town.toString());
+		var choice1 = new CloseNarrationChoice();
+		node.add(new Edge(choice1, nextNode));
+
 	}
 	@BuilderMethod
 	public void atTown() {

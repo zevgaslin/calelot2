@@ -44,12 +44,13 @@ public class MyNodeBuilder extends NodeBuilder {
 // Zev Gaslin
 	@BuilderMethod
 	public void TownActions() {
+		var node = get(MyNodeLabels.TownText.toString());
+		node.add(new HideMenu()).add(new EnableInput());
+		node.add(new NarrationSequence("The evil king Gorlock hath raised taxes upon thy farm, and you could not afford the new fees. As such, Gorlock sent his goons to roughen you up and repossess your family farm! You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidated buildings and broken people. You know what to do next. \n" + "Where would you like to go?"));
+		 	}
+	public void inTown() {
 		var node = get(MyNodeLabels.Town.toString());
 		node.add(new HideMenu()).add(new EnableInput());
-		node.add(new NarrationSequence("The evil king Gorlock hath raised taxes upon thy farm, and you could not afford the new fees. As such, Gorlock sent his goons to roughen you up and repossess your family farm! You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidated buildings and broken people. You know what to do next. \n"
-				+ "Where would you like to go?"));
-		
-		//node.add(new NarrationSequence("You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidatedbuildings and broken people. You know what to do next. Where would you liketo go?"));
 	}
 
 //Zev Gaslin
@@ -57,8 +58,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void CityActions() {
 		var node = get(MyNodeLabels.City.toString());
 		// node.add(new CreateAll(List.of(npc1, gaurd)));
-		node.add(new NarrationSequence(
-				"As you pass through the pearly gates of the city, you are taken aback by the hustle and bustle of the beautiful Camelot City. You are excited by the prospect of exploring every corner of the mysterious new location, but you know you must focus on your ultimate goal; getting your land back.\n"));
+		node.add(new NarrationSequence("As you pass through the pearly gates of the city, you are taken aback by the hustle and bustle of the beautiful Camelot City. You are excited by the prospect of exploring every corner of the mysterious new location, but you know you must focus on your ultimate goal; getting your land back.\n"));
 	}
 
 //Jaedan Curcio
@@ -68,7 +68,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		node.add(new WalkTo(player, town, "RightLog"));
 		node.add(new HideMenu()).add(new EnableInput());
 		node.add(new NarrationSequence(
-				"While in your begging spot, a citizen crosses your path. Would you like to beg for coins, attempt to fight him, or attempt to pickpocket him?"));
+			"While in your begging spot, a citizen crosses your path. Would you like to beg for coins, attempt to fight him, or attempt to pickpocket him?"));
 	}
 
 //Joshua Haddad
