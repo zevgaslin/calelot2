@@ -20,6 +20,7 @@ public final class MyStoryEntities {
 	//You can access these instances in your EdgeBuilder and NodeBuilder classes by importing:
 	//import static myclassproject.mystorygraph.MyStoryEntities.*;
 
+	//Test
 
 	public static final Place town = new Place("Town", PlaceTypes.Camp);
 	public static final Place farm = new Place("Farm", PlaceTypes.Farm);

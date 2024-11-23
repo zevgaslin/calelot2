@@ -5,3 +5,4 @@ public enum ChoiceLabels {
 	Leave, TalkToBandit
 }
 
+//Test

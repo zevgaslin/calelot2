@@ -19,6 +19,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 	public MyEdgeBuilder(List<Node> list) {
 		super(list);
 	}
+	//Test
 
 	/**
 	 * Write a method for each node. 

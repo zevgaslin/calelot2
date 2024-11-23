@@ -80,3 +80,4 @@ public class QuestNodeBuilder extends NodeBuilder {
 				.add(new EnableInput());
 	}
 }
+//Test

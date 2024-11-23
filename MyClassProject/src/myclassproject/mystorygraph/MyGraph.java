@@ -31,3 +31,4 @@ public class MyGraph extends Graph {
 	}
 
 }
+//Test

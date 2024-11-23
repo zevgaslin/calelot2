@@ -15,3 +15,4 @@ public final class QuestStoryEntities {
 	public static final Furniture cityDoor = new Furniture(town, FurnitureTypes.RedHouseDoor);
 	public static final Furniture cityExit = new Furniture(town, FurnitureTypes.NorthEnd);
 }
+//Test

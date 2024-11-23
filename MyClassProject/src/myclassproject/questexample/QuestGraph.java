@@ -20,3 +20,4 @@ public class QuestGraph extends Graph {
 	}
 
 }
+//Test

@@ -31,3 +31,4 @@ public class TestEdgeBuilder extends QuestEdgeBuilder {
 
 	
 }
+//Test

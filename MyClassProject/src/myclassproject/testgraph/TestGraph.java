@@ -22,3 +22,4 @@ public class TestGraph extends Graph {
 	}
 
 }
+//Test
