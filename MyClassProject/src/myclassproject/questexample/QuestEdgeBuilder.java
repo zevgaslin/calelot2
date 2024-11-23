@@ -61,7 +61,6 @@ public class QuestEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void refuseEdges() {
 		var node = get(NodeLabels.refuse.toString());
-
 		var choice1 = new CloseNarrationChoice();
 		var nextNode1 = get(NodeLabels.reset.toString());
 		node.add(new Edge(choice1, nextNode1));

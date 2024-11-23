@@ -2,8 +2,15 @@ package myclassproject.mystorygraph;
 
 import java.util.List;
 import myclassproject.mystorygraph.MyNodeLabels;
+//import myclassproject.mystorygraph.FadeOut;
+//import myclassproject.mystorygraph.HideNarration;
+//import myclassproject.mystorygraph.SetPosition;
+
 import com.storygraph.*;
 import static myclassproject.mystorygraph.MyStoryEntities.*;
+//import static myclassproject.questexample.QuestStoryEntities.cottage;
+//import static myclassproject.questexample.QuestStoryEntities.player;
+
 import java.util.List;
 import com.actions.*;
 import com.sequences.*;
@@ -43,15 +50,26 @@ public class MyNodeBuilder extends NodeBuilder {
 
 // Zev Gaslin
 	@BuilderMethod
-	public void TownActions() {
-		var node = get(MyNodeLabels.Town.toString());
-		node.add(new HideMenu()).add(new EnableInput());
-		node.add(new NarrationSequence("The evil king Gorlock hath raised taxes upon thy farm, and you could not afford the new fees. As such, Gorlock sent his goons to roughen you up and repossess your family farm! You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidated buildings and broken people. You know what to do next. \n"
-				+ "Where would you like to go?"));
-		
-		//node.add(new NarrationSequence("You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidatedbuildings and broken people. You know what to do next. Where would you liketo go?"));
-	}
+	public void FarmActions() {
+		var node = get(MyNodeLabels.Farm.toString());
+		node.clearSequence();
+		node.add(new HideMenu()).add(new Dance(player)).add(new EnableInput());
+		//.add(new NarrationSequence("Simon Says: The evil king Gorlock hath raised taxes upon thy farm, and you could not afford the new fees. As such, Gorlock sent his goons to roughen you up and repossess your family farm! You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidated buildings and broken people. You know what to do next. \n"
+				
+			}
 
+	
+	public void Towney() {
+		var node = get(MyNodeLabels.Towney.toString());
+		//node.clearSequence();
+		node.add(new FadeOut()).add(new SetPosition(player, town)).add(new FadeIn());
+			}
+		
+		
+	
+	
+	
+ /*
 //Zev Gaslin
 	@BuilderMethod
 	public void CityActions() {
@@ -436,5 +454,6 @@ public class MyNodeBuilder extends NodeBuilder {
 		node.add(new CreditsSequence(
 				"Game coded and written by Zev Gaslin, Josh Haddad, and Jaedan Curcio.\n Look out for Adventures of Grungus 2: Electric Boogaloo in Blockbuster stores near you."));
 	}
+	*/
 }
 //Test

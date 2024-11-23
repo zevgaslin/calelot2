@@ -10,6 +10,7 @@ import com.storygraph.Edge;
 import com.storygraph.NodeBuilder;
 import com.storygraph.Node;
 import myclassproject.mystorygraph.MyStoryEntities;
+//import myclassproject.questexample.CloseNarrationChoice;
 
 public class MyEdgeBuilder extends MyNodeBuilder {
 	/**
@@ -27,20 +28,33 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 	 * The method should add the edges of the node one by one. 
 	 * These methods must have a BuilderMethod annotation.
 	 */
-	@BuilderMethod
 	
 	//Zev Gaslin Code
-	
+	@BuilderMethod
 	public void root() { 
 		var root = get(MyNodeLabels.root.toString());
 		var choice = new MenuChoice(MenuChoice.Options.Start);
-		var nextNode = get(MyNodeLabels.Town.toString());
+		var nextNode = get(MyNodeLabels.Farm.toString());
 		root.add(new Edge(choice, nextNode));
 	}
 	@BuilderMethod
-	public void atTown() {
-		var node = get(MyNodeLabels.Town.toString());
+	public void atFarm() { 
+		var node = get(MyNodeLabels.Farm.toString());
+		var choice = new PlayerInteraction(MyChoiceLabels.goToTown.toString(), MyStoryEntities.farmDoor, Icons.exit, "Go to the Town");
+		var nextNode = get(MyNodeLabels.Towney.toString());
+		node.add(new Edge(choice, nextNode));
+		
 
+	}
+	
+	@BuilderMethod
+	public void atTown() {
+		var node = get(MyNodeLabels.Towney.toString());
+		var choice = new PlayerInteraction(MyChoiceLabels.goToTown.toString(), MyStoryEntities.farmDoor, Icons.coins, "Working");
+		var nextNode = get(MyNodeLabels.Apple.toString());
+		node.add(new Edge(choice, nextNode));
+		/*
+		var node = get(MyNodeLabels.Towney.toString());
 		var choice1 = new PlayerInteraction(MyChoiceLabels.Wall.toString(), MyStoryEntities.npc1, Icons.coins, "Go to the Begging Spot");
 		var nextNode1 = get(MyNodeLabels.BeggingSpot.toString());
 		node.add(new Edge(choice1, nextNode1));
@@ -51,11 +65,12 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		
 		var choice3 = new PlayerInteraction(MyChoiceLabels.Gate.toString(), MyStoryEntities.gaurd, Icons.bridge, "Go to the City");
 		var nextNode3 = get(MyNodeLabels.Gate.toString());
-		node.add(new Edge(choice3, nextNode3));
+		node.add(new Edge(choice3, nextNode3));*/
 	}
+	/*
 	@BuilderMethod
 	public void atTownGeneralStore() {
-		var node = get(MyNodeLabels.TownGeneralStore.toString());
+ 		var node = get(MyNodeLabels.TownGeneralStore.toString());
 
 		var choice1 = new PlayerInteraction(MyChoiceLabels.Apple.toString(), MyStoryEntities.apple , Icons.apple, "Purchase Apple ");
 		var nextNode1 = get(MyNodeLabels.Apple.toString());
@@ -69,10 +84,12 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode3 = get(MyNodeLabels.VerySourGrapes.toString());
 		node.add(new Edge(choice3, nextNode3));
 		
-		var choice4 = new PlayerInteraction(MyChoiceLabels.Town.toString(), MyStoryEntities.merchant, Icons.exit, "Exit Store");
-		var nextNode4 = get(MyNodeLabels.Town.toString());
+		var choice4 = new PlayerInteraction(MyChoiceLabels.goToTown.toString(), MyStoryEntities.merchant, Icons.exit, "Exit Store");
+		var nextNode4 = get(MyNodeLabels.Towney.toString());
 		node.add(new Edge(choice4, nextNode4));
 	}
+	
+	
 	@BuilderMethod
 	public void Apple() {
 		var node = get(MyNodeLabels.Apple.toString());
@@ -128,7 +145,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode3 = get(MyNodeLabels.VerySourGrapes1.toString());
 		node.add(new Edge(choice3, nextNode3));
 		
-		var choice4 = new PlayerInteraction(MyChoiceLabels.Town.toString(), MyStoryEntities.merchant, Icons.exit, "Exit Store");
+		var choice4 = new PlayerInteraction(MyChoiceLabels.goToTown.toString(), MyStoryEntities.merchant, Icons.exit, "Exit Store");
 		var nextNode4 = get(MyNodeLabels.City.toString());
 		node.add(new Edge(choice4, nextNode4));
 	}
@@ -178,7 +195,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		node.add(new Edge(choice1, nextNode1));
 		
 		var choice2 = new DialogChoice("Return to Town");
-		var nextNode2 = get(MyNodeLabels.Town.toString());
+		var nextNode2 = get(MyNodeLabels.Towney.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
 	public void atCity() {
@@ -298,7 +315,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var choice3 = new PlayerInteraction(MyChoiceLabels.Fight.toString(), MyStoryEntities.npc1, Icons.sword, "Fight");
 		node.add(new Edge(choice3, nextNode3));
 		
-		var nextNode4 = get(MyNodeLabels.Town.toString());
+		var nextNode4 = get(MyNodeLabels.Towney.toString());
 		var choice4 = new PlayerInteraction(MyChoiceLabels.Leave.toString(), MyStoryEntities.npc1, Icons.exit, "Go back to town");
 		node.add(new Edge(choice4, nextNode4));
 	}
@@ -341,8 +358,8 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var choice = new PlayerInteraction(MyChoiceLabels.Upgrade.toString(), MyStoryEntities.blacksmith, Icons.forge, "Upgrade your weapon.");
 		node.add(new Edge(choice, nextNode));
 		
-		var choice4 = new PlayerInteraction(MyChoiceLabels.Town.toString(), MyStoryEntities.npc1, Icons.exit, "Exit Store");
-		var nextNode4 = get(MyNodeLabels.Town.toString());
+		var choice4 = new PlayerInteraction(MyChoiceLabels.goToTown.toString(), MyStoryEntities.npc1, Icons.exit, "Exit Store");
+		var nextNode4 = get(MyNodeLabels.Towney.toString());
 		node.add(new Edge(choice4, nextNode4));
 	}
 	@BuilderMethod
@@ -363,8 +380,8 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode = get(MyNodeLabels.GetBook.toString());
 		var choice = new PlayerInteraction(MyChoiceLabels.Upgrade.toString(), MyStoryEntities.alchemist, Icons.book, "Want this old book, its taking up space in my shop?");
 		node.add(new Edge(choice, nextNode));
-		var choice4 = new PlayerInteraction(MyChoiceLabels.Town.toString(), MyStoryEntities.npc1, Icons.exit, "Exit Store");
-		var nextNode4 = get(MyNodeLabels.Town.toString());
+		var choice4 = new PlayerInteraction(MyChoiceLabels.goToTown.toString(), MyStoryEntities.npc1, Icons.exit, "Exit Store");
+		var nextNode4 = get(MyNodeLabels.Towney.toString());
 		node.add(new Edge(choice4, nextNode4));
 		
 	}
@@ -575,6 +592,6 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 	
 	
 	
-
+*/
 	
 }

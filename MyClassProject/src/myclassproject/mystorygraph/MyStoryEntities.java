@@ -1,5 +1,8 @@
 package myclassproject.mystorygraph;
 
+
+import com.entities.*;
+import com.enums.*;
 import com.entities.Characters;
 import com.entities.Furniture;
 import com.entities.Item;
@@ -54,6 +57,8 @@ public final class MyStoryEntities {
 	public static final Characters gaurd = new Characters("Gaurd", BodyTypes.F, Clothing.HeavyArmour, HairStyle.Bald, Colors.Black, 4);
 	public static final Characters pirate = new Characters("Pirate", BodyTypes.H, Clothing.Peasant, HairStyle.Musketeer_Full, Colors.Brown, 4);
 	public static final Characters merchant = new Characters("Merchant", BodyTypes.B, Clothing.Merchant, HairStyle.Long, Colors.Brown, 4);
+	public static final Furniture farmDoor = new Furniture(farm, FurnitureTypes.Door);
+
 
 
 
