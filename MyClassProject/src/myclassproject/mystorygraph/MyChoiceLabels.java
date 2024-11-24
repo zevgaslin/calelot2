@@ -4,13 +4,18 @@ package myclassproject.mystorygraph;
 public enum MyChoiceLabels {
 	Relocate,
 	Continue, 
+	Beat,
+	Steal,
+	Talk,
+	Kill,
+	Apple,
+	
 	Wall, 
 	goToTown, 
 	TownGeneralStore, 
 	Gate, 
 	Pay20Coins, 
 	Twinkie , 
-	Apple, 
 	VerySourGrapes,
 	GeneralStore , 
 	AlchemyStore,
@@ -25,12 +30,13 @@ public enum MyChoiceLabels {
 	Fight,
 	Leave,
 	Upgrade,
+	MainHallUnsafe2,
 	MainHallUnsafe3,
 	ThroneRoom,
 	FightKing,
 	CastleGate,
 	MainHallUnsafe,
-	MainHallUnsafe2
+	MainHallUnsafe28
 }
 //Test
 
