@@ -1,5 +1,8 @@
 package myclassproject.mystorygraph;
 
+
+import com.entities.*;
+import com.enums.*;
 import com.entities.Characters;
 import com.entities.Furniture;
 import com.entities.Item;
@@ -22,6 +25,7 @@ public final class MyStoryEntities {
 
 	//Test
 
+	
 	public static final Place town = new Place("Town", PlaceTypes.Camp);
 	public static final Place farm = new Place("Farm", PlaceTypes.Farm);
 	public static final Place city = new Place("City", PlaceTypes.City);
@@ -35,7 +39,7 @@ public final class MyStoryEntities {
 	public static final Place greatHall = new Place(" GreatHall", PlaceTypes.GreatHall);
 	public static final Place port = new Place("Port", PlaceTypes.Port);
 	public static final Place storage = new Place("Storage", PlaceTypes.Storage);
-	//public static final Place bridge = new Place("Bridge", PlaceTypes.Bridge);
+	public static final Place bridge = new Place("Bridge", PlaceTypes.Bridge);
 	public static final Item sword = new Item("Sword", ItemTypes.Sword);
 	public static final Item coin = new Item("Coin", ItemTypes.Coin);
 	public static final Item evilBook = new Item("EvilBook", ItemTypes.EvilBook);
@@ -54,6 +58,14 @@ public final class MyStoryEntities {
 	public static final Characters gaurd = new Characters("Gaurd", BodyTypes.F, Clothing.HeavyArmour, HairStyle.Bald, Colors.Black, 4);
 	public static final Characters pirate = new Characters("Pirate", BodyTypes.H, Clothing.Peasant, HairStyle.Musketeer_Full, Colors.Brown, 4);
 	public static final Characters merchant = new Characters("Merchant", BodyTypes.B, Clothing.Merchant, HairStyle.Long, Colors.Brown, 4);
+	public static final Furniture farmExit = new Furniture(farm, FurnitureTypes.Exit);
+	public static final Furniture townStall = new Furniture(town, FurnitureTypes.Stall);
+	public static final Furniture townLog = new Furniture(town, FurnitureTypes.RightLog);
+	public static final Furniture townExit = new Furniture(town, FurnitureTypes.Exit);
+	public static final Furniture SouthEnd = new Furniture(bridge, FurnitureTypes.SouthEnd);
+	public static final Furniture NorthEnd = new Furniture(bridge, FurnitureTypes.NorthEnd);
+	public static final Furniture PortExit = new Furniture(port, FurnitureTypes.Exit);
+	public static final Furniture Bigship = new Furniture(port, FurnitureTypes.BigShip);
 
 
 

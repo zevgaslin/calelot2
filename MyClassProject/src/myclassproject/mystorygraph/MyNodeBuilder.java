@@ -1,13 +1,22 @@
 package myclassproject.mystorygraph;
 
 import java.util.List;
-import myclassproject.mystorygraph.MyNodeLabels;
-import com.storygraph.*;
+//import myclassproject.mystorygraph.MyNodeLabels;
+//import myclassproject.mystorygraph.FadeOut;
+//import myclassproject.mystorygraph.HideNarration;
+//import myclassproject.mystorygraph.SetPosition;
+
+
 import static myclassproject.mystorygraph.MyStoryEntities.*;
+//import static myclassproject.questexample.QuestStoryEntities.cottage;
+//import static myclassproject.questexample.QuestStoryEntities.player;
+
+import com.storygraph.*;
+
 import java.util.List;
 import com.actions.*;
 import com.sequences.*;
-import com.storygraph.*;
+//import myclassproject.questexample.NodeLabels;
 
 public class MyNodeBuilder extends NodeBuilder {
 	public MyNodeBuilder(List<Node> list) {
@@ -19,12 +28,12 @@ public class MyNodeBuilder extends NodeBuilder {
 	 * its label. The method adds Camelot actions that execute in order when
 	 * visiting that node. These methods must have a BuilderMethod annotation.
 	 */
+
+	
 // Joshua Haddad
 	@BuilderMethod
 	public void rootActions() {
-//Example:
 		var root = get(MyNodeLabels.root.toString());
-		root.clearSequence();
 		root.add(new CreateAll(List.of(farm, town, city, blackSmith, castleCrossroads, port, ruins, greatHall,
 				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, magnifyingGlass, apple)))
 				.add(new CreateCharacterSequence(player)).add(new CreateCharacterSequence(bandit))
@@ -36,29 +45,160 @@ public class MyNodeBuilder extends NodeBuilder {
 				.add(new SetPosition(npc1, town)).add(new SetPosition(npc2, town))
 				.add(new SetPosition(blacksmith, blackSmith)).add(new SetPosition(alchemist, alchemyShop))
 				.add(new SetPosition(king, greatHall))
-//.add(new SetPosition(gaurd, bridge))
+				.add(new SetPosition(gaurd, bridge))
 				.add(new SetPosition(pirate, port)).add(new SetCameraFocus(player))
-				.add(new SetPosition(merchant, storage)).add(new ShowMenu());
+				.add(new SetPosition(merchant, storage))
+		.add(new SetPosition(merchant, storage)).add(new SetPosition(bandit, dungeon)).add(new ShowMenu());
 	}
-
-// Zev Gaslin
+// Joshua Haddad
+	@BuilderMethod
+	public void FarmNarration() {
+		var node = get(MyNodeLabels.FarmNar.toString());
+		node.add(new HideMenu()).add(new HideNarration())
+		.add(new NarrationSequence("The evil king Gorlock hath raised taxes upon thy farm, and you could not afford the new fees. As such, Gorlock sent his goons to roughen you up and repossess your family farm! You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidated buildings and broken people. You know what to do next. \n"));
+			}
+	@BuilderMethod
+	public void FarmActions() {
+		var node = get(MyNodeLabels.FarmAct.toString());
+		node.add(new HideNarration()).add(new EnableInput());
+			}
 	@BuilderMethod
 	public void TownActions() {
-		var node = get(MyNodeLabels.TownText.toString());
-		node.add(new HideMenu()).add(new EnableInput());
-		node.add(new NarrationSequence("The evil king Gorlock hath raised taxes upon thy farm, and you could not afford the new fees. As such, Gorlock sent his goons to roughen you up and repossess your family farm! You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidated buildings and broken people. You know what to do next. \n" + "Where would you like to go?"));
-		 	}
-	public void inTown() {
-		var node = get(MyNodeLabels.Town.toString());
-		node.add(new HideMenu()).add(new EnableInput());
+		var node = get(MyNodeLabels.Town1.toString());
+		node.add(new HideDialog()).add(new SetPosition(npc1, townStall)).add(new SetPosition(npc2, townLog)).add(new FadeOut()).add(new SetPosition(player, town)).add(new FadeIn());
+			}
+	@BuilderMethod 
+	public void returntoTown() {
+		var node = get(MyNodeLabels.Town2.toString());
+		node.add(new HideDialog()).add(new HideDialog()).add(new HideNarration());
 	}
 
+
+		//Town general Store
+	@BuilderMethod
+	public void AppleTalk() {
+		var node= get(MyNodeLabels.AppleTalk.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Would you like to purchase this apple for 1 coin"),List.of ("Yes","No")));
+	}
+	
+	@BuilderMethod
+	public void AppleTalkYes() {
+		var node= get(MyNodeLabels.AppleTalkYes.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, apple, npc1));
+	}
+	@BuilderMethod
+	public void AppleTalkNo() {
+		var node= get(MyNodeLabels.AppleTalkNo.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+	}
+
+	
+	@BuilderMethod
+	public void BreadTalk() {
+		var node= get(MyNodeLabels.BreadTalk.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Would you like to purchase this bread for 5 coins"),List.of ("Yes","No")));
+	}
+	
+	
+	@BuilderMethod
+	public void BreadTalkYes() {
+		var node= get(MyNodeLabels.BreadTalkYes.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, bread, npc1));
+	}
+	@BuilderMethod
+	public void BreadTalkNo() {
+		var node= get(MyNodeLabels.BreadTalkNo.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+	}
+	
+	@BuilderMethod
+	public void GrapesTalk() {
+		var node= get(MyNodeLabels.GrapesTalk.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Would you like to purchase this Grapes for 10 coins"),List.of ("Yes","No")));
+	}
+	
+	@BuilderMethod
+	public void GrapesTalkYes() {
+		var node= get(MyNodeLabels.GrapesTalkYes.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, grapes, npc1));
+	}
+	@BuilderMethod
+	public void GrapesTalkNo() {
+		var node= get(MyNodeLabels.GrapesTalkNo.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+	}
+	
+	//NPC 2
+	
+	@BuilderMethod
+	public void PickPocket() {
+		var node= get(MyNodeLabels.PickPocket1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("What a Lovely Day (You steal 20 coins)"),List.of ("Continue")));
+	} 
+	@BuilderMethod
+	public void Kill() {
+		var node= get(MyNodeLabels.Kill1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Attack(player,npc2,true))
+		.add(new DialogSequence(player, npc2, List.of("Ouch :( (You steal my 100 Coins)"),List.of ("Continue"))).add(new Die(npc2));
+	}
+
+	
+	//Bridge
+	/*
+	@BuilderMethod
+	public void Bridge() {
+		var node= get(MyNodeLabels.Bridge.toString());		
+		node.clearSequence();
+		node.add(new SetPosition(gaurd, SouthEnd)).add(new FadeOut()).add(new SetPosition(player, bridge)).add(new FadeIn())
+		.add(new HideDialog()).add(new HideNarration());
+	}
+	*/
+	/*	
+	
+	@BuilderMethod
+	public void GuardTalk() {
+		var node= get(MyNodeLabels.GuardTalk.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new WalkTo(player,gaurd))
+		.add(new DialogSequence(player, npc1, List.of("Halt!!! Pay me 20 coins to pass"),List.of("Fine","No")));
+	}
+		
+	@BuilderMethod
+	public void guardTalkYes() {
+		var node= get(MyNodeLabels.GuardTalkYes.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Thanks"),null));
+	}
+	@BuilderMethod
+	public void guardTalkNo() {
+		var node= get(MyNodeLabels.GuardTalkNo.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Then no passing"),null));
+	}
+	*/
+}
+	
+	
+
+ /*
 //Zev Gaslin
 	@BuilderMethod
 	public void CityActions() {
 		var node = get(MyNodeLabels.City.toString());
 		// node.add(new CreateAll(List.of(npc1, gaurd)));
-		node.add(new NarrationSequence("As you pass through the pearly gates of the city, you are taken aback by the hustle and bustle of the beautiful Camelot City. You are excited by the prospect of exploring every corner of the mysterious new location, but you know you must focus on your ultimate goal; getting your land back.\n"));
+		node.add(new NarrationSequence(
+				"As you pass through the pearly gates of the city, you are taken aback by the hustle and bustle of the beautiful Camelot City. You are excited by the prospect of exploring every corner of the mysterious new location, but you know you must focus on your ultimate goal; getting your land back.\n"));
 	}
 
 //Jaedan Curcio
@@ -68,7 +208,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		node.add(new WalkTo(player, town, "RightLog"));
 		node.add(new HideMenu()).add(new EnableInput());
 		node.add(new NarrationSequence(
-			"While in your begging spot, a citizen crosses your path. Would you like to beg for coins, attempt to fight him, or attempt to pickpocket him?"));
+				"While in your begging spot, a citizen crosses your path. Would you like to beg for coins, attempt to fight him, or attempt to pickpocket him?"));
 	}
 
 //Joshua Haddad
@@ -436,5 +576,5 @@ public class MyNodeBuilder extends NodeBuilder {
 		node.add(new CreditsSequence(
 				"Game coded and written by Zev Gaslin, Josh Haddad, and Jaedan Curcio.\n Look out for Adventures of Grungus 2: Electric Boogaloo in Blockbuster stores near you."));
 	}
-}
+	*/
 //Test
