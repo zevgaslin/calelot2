@@ -196,7 +196,17 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void CityAct() {
 		var node = get(MyNodeLabels.CityAct.toString());
-		node.add(new HideDialog()).add(new HideNarration()).add(new EnableInput());
+		node.add(new HideDialog()).add(new HideNarration()).add(new EnableInput()).add(new Dance(player)).add(new EnableInput());
+		
+	}
+	
+	@BuilderMethod
+	public void DockActions() {
+		var node = get(MyNodeLabels.Dock.toString());
+		//node.add(new SetPosition(npc1, port, "BigStall"));
+		node.add(new NarrationSequence(
+				"You are greeted by the smell of sea mist and rum as you enter the dock at the edge of town. You see an intimidating swashbuckler sitting by his ship, as well as local city goers fishing off of the dock. 'Argh! Are ye a pirate?' Asks a captain from atop his pirate ship."))
+		.add(new SetPosition(player, port));
 	}
 }
 
@@ -377,14 +387,9 @@ public class MyNodeBuilder extends NodeBuilder {
 	}
 
 //Zev Gaslin
-	@BuilderMethod
-	public void DockActions() {
-		var node = get(MyNodeLabels.Dock.toString());
-		node.add(new SetPosition(npc1, port, "BigStall"));
-		node.add(new NarrationSequence(
-				"You are greeted by the smell of sea mist and rum as you enter the dock at the edge of town. You see an intimidating swashbuckler sitting by his ship, as well as local city goers fishing off of the dock. 'Argh! Are ye a pirate?' Asks a captain from atop his pirate ship."));
-	}
+ */
 
+/*
 	@BuilderMethod
 	public void PirateFightActions() {
 		var node = get(MyNodeLabels.PirateFight.toString());

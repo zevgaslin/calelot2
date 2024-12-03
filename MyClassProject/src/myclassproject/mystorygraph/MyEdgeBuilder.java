@@ -225,10 +225,17 @@ public class MyEdgeBuilder extends NodeBuilder {
 		node.add(new Edge(choice2, nextNode2));
 	}
 	@BuilderMethod
-	public void CityNar() {
+	public void CityNared() {
 		var node = get(MyNodeLabels.CityNar.toString());
 		var choice1 = new CloseNarrationChoice();
 		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void CityActed() {
+		var node = get(MyNodeLabels.CityAct.toString());
+		var choice1 =  new PlayerInteraction(MyChoiceLabels.Relocated4.toString(), MyStoryEntities.Dockdoor, Icons.tree, "Go to Dock");
+		var nextNode1 = get(MyNodeLabels.Dock.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
 	

@@ -13,6 +13,8 @@ public enum MyChoiceLabels {
 	Kill,
 	Apple,
 	Relocated,
+	Relocated4,
+	
 	Wall, 
 	goToTown, 
 	TownGeneralStore, 
