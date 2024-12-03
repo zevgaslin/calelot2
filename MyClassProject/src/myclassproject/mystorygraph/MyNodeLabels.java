@@ -26,7 +26,17 @@ public enum MyNodeLabels{
 	Bridge2,
 	CityNar,
 	CityAct,
-	
+	AppleTalk1,
+	AppleTalkYes1,
+	AppleTalkNo1,
+	BreadTalk1,
+	BreadTalkYes1,
+	BreadTalkNo1,
+	GrapesTalk1,
+	GrapesTalkYes1,
+	GrapesTalkNo1,
+	BlacksmithNar,
+	BlacksmithAct,
 	
 	Twinkie,//All Choices Made
 	Apple,//All Choices Made

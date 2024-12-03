@@ -36,7 +36,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var root = get(MyNodeLabels.root.toString());
 		root.clearSequence();
 		root.add(new CreateAll(List.of(farm, town, city, blackSmith, castleCrossroads, port, ruins, greatHall,
-				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, magnifyingGlass, apple/*,bread,grapes*/)))
+				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, magnifyingGlass, apple, bread))
 				.add(new CreateCharacterSequence(player)).add(new CreateCharacterSequence(bandit))
 				.add(new CreateCharacterSequence(npc1)).add(new CreateCharacterSequence(npc2))
 				.add(new CreateCharacterSequence(blacksmith)).add(new CreateCharacterSequence(alchemist))
@@ -49,7 +49,7 @@ public class MyNodeBuilder extends NodeBuilder {
 				.add(new SetPosition(gaurd, bradge))
 				.add(new SetPosition(pirate, port)).add(new SetCameraFocus(player))
 				.add(new SetPosition(merchant, storage))
-		.add(new SetPosition(merchant, storage)).add(new SetPosition(bandit, dungeon)).add(new ShowMenu());
+		.add(new SetPosition(merchant, storage)).add(new SetPosition(bandit, dungeon)).add(new ShowMenu()));
 	}
 // Joshua Haddad
 	@BuilderMethod
@@ -189,15 +189,98 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void CityNar() {
 		var node = get(MyNodeLabels.CityNar.toString());
-		node.add(new HideDialog()).add(new DisableInput()).add(new FadeOut()).add(new SetPosition(player, city)).add(new FadeIn())
+		node.add(new HideDialog()).add(new DisableInput()).add(new FadeOut()).add(new SetPosition(npc1 , Plant)).add(new SetPosition(npc2, city, "Alley")).add(new SetPosition(player, city)).add(new FadeIn())
 		.add(new NarrationSequence(
 				"As you pass through the pearly gates of the city, you are taken aback by the hustle and bustle of the beautiful Camelot City. You are excited by the prospect of exploring every corner of the mysterious new location, but you know you must focus on your ultimate goal; getting your land back.\n"));
 	}
 	@BuilderMethod
 	public void CityAct() {
 		var node = get(MyNodeLabels.CityAct.toString());
-		node.add(new HideDialog()).add(new HideNarration()).add(new EnableInput()).add(new Dance(player)).add(new EnableInput());
+		node.add(new HideDialog()).add(new HideNarration()).add(new EnableInput());
 		
+	}
+	
+	@BuilderMethod
+	public void AppleTalk1() {
+		var node= get(MyNodeLabels.AppleTalk1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Oh hi nice to see you again. Would you like to purchase this apple for 1 coin"),List.of ("Yes","No")));
+	}
+	
+	@BuilderMethod
+	public void AppleTalkYes1() {
+		var node= get(MyNodeLabels.AppleTalkYes1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, apple, npc1));
+	}
+	@BuilderMethod
+	public void AppleTalkNo1() {
+		var node= get(MyNodeLabels.AppleTalkNo1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+	}
+
+	
+	@BuilderMethod
+	public void BreadTalk1() {
+		var node= get(MyNodeLabels.BreadTalk1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Oh hi nice to see you again. Would you like to purchase this bread for 5 coins"),List.of ("Yes","No")));
+	}
+	
+	
+	@BuilderMethod
+	public void BreadTalkYes1() {
+		var node= get(MyNodeLabels.BreadTalkYes1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, bread, npc1));
+	}
+	@BuilderMethod
+	public void BreadTalkNo1() {
+		var node= get(MyNodeLabels.BreadTalkNo1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+	}
+	
+	@BuilderMethod
+	public void GrapesTalk1() {
+		var node= get(MyNodeLabels.GrapesTalk1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Oh hi nice to see you again. Would you like to purchase this Grapes for 10 coins"),List.of ("Yes","No")));
+	}
+	
+	@BuilderMethod
+	public void GrapesTalkYes1() {
+		var node= get(MyNodeLabels.GrapesTalkYes1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, grapes, npc1));
+	}
+	@BuilderMethod
+	public void GrapesTalkNo1() {
+		var node= get(MyNodeLabels.GrapesTalkNo1.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+	}
+	
+	@BuilderMethod
+	public void BlackSmithNar() {
+		var node = get(MyNodeLabels.BlacksmithNar.toString());
+		node.add(new FadeOut()).add(new SetPosition(player, blackSmith)).add(new FadeIn())
+		.add(new NarrationSequence(
+				"The smell of fire fills your nostrils as you enter the blacksmiths shop. “Welcome to my humble forge”, says the Blacksmith. “Please, let me know if you’d like to purchase any of my wares”."));
+		
+	}
+
+	@BuilderMethod
+	public void BlackSmithAct() {
+		var node = get(MyNodeLabels.BlacksmithAct.toString());
+		node.add(new HideNarration())
+	.add(new Face(blacksmith, player))
+	.add(new Face(player, blacksmith))
+	.add(new Draw(player, sword))
+	.add(new Take(blacksmith, sword, player))
+	.add(new Dance(blacksmith))
+	.add(new Give(blacksmith, sword, player));
 	}
 	
 	@BuilderMethod
@@ -208,8 +291,9 @@ public class MyNodeBuilder extends NodeBuilder {
 				"You are greeted by the smell of sea mist and rum as you enter the dock at the edge of town. You see an intimidating swashbuckler sitting by his ship, as well as local city goers fishing off of the dock. 'Argh! Are ye a pirate?' Asks a captain from atop his pirate ship."))
 		.add(new SetPosition(player, port));
 	}
-}
+	
 
+	}
 
 /*
 //Jaedan Curcio

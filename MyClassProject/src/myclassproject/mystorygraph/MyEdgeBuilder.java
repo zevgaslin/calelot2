@@ -217,7 +217,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		node.add(new Edge(choice1, nextNode1));
 	}
 	@BuilderMethod
-	public void GuardTalNo() {
+	public void GuardTalkNo() {
 		var node = get(MyNodeLabels.GuardTalkNo.toString());
 		
 		var choice2 = new DialogChoice("Continue");
@@ -234,10 +234,121 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void CityActed() {
 		var node = get(MyNodeLabels.CityAct.toString());
-		var choice1 =  new PlayerInteraction(MyChoiceLabels.Relocated4.toString(), MyStoryEntities.Dockdoor, Icons.tree, "Go to Dock");
+		var choice1 =  new PlayerInteraction(MyStoryEntities.player, MyChoiceLabels.Relocated4.toString(), MyStoryEntities.Dockdoor);
 		var nextNode1 = get(MyNodeLabels.Dock.toString());
 		node.add(new Edge(choice1, nextNode1));
+		
+		var choice5 = new PlayerInteraction(MyChoiceLabels.Relocated5.toString(), MyStoryEntities.Blackdoor, Icons.door, "Go to Blacksmith");
+		var nextNode5 = get(MyNodeLabels.BlacksmithNar.toString());
+		node.add(new Edge(choice5, nextNode5));
+		
+		var choice2 = new PlayerInteraction(MyChoiceLabels.Talk4.toString(), MyStoryEntities.npc1, Icons.apple, "Buy Apple");
+		var nextNode2 = get(MyNodeLabels.AppleTalk1.toString());
+		node.add(new Edge(choice2, nextNode2));
+		
+		var choice3 = new PlayerInteraction(MyChoiceLabels.Talk5.toString(), MyStoryEntities.npc1, Icons.bread, "Buy Bread");
+		var nextNode3 = get(MyNodeLabels.BreadTalk1.toString());
+		node.add(new Edge(choice3, nextNode3));
+		
+		var choice4 = new PlayerInteraction(MyChoiceLabels.Talk6.toString(), MyStoryEntities.npc1, Icons.potion, "Buy Grapes");
+		var nextNode4 = get(MyNodeLabels.GrapesTalk1.toString());
+		node.add(new Edge(choice4, nextNode4));
+		
 	}
+	
+	@BuilderMethod
+	public void AppleTalk1() { 
+		var node = get(MyNodeLabels.AppleTalk1.toString());
+		node.clearEdges();
+		var choice1 = new DialogChoice("Yes");
+		var nextNode1 = get(MyNodeLabels.AppleTalkYes1.toString());
+		node.add(new Edge(choice1, nextNode1));
+		var choice2 = new DialogChoice("No");
+		var nextNode2 = get(MyNodeLabels.AppleTalkNo1.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void AppleTalkYes1() { 
+			var node = get(MyNodeLabels.AppleTalkYes1.toString());
+			node.clearEdges();
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void AppleTalkNo1() { 
+			var node = get(MyNodeLabels.AppleTalkNo1.toString());
+			node.clearEdges();
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	
+	@BuilderMethod
+	public void BreadTalk1() { 
+		var node = get(MyNodeLabels.BreadTalk1.toString());
+		node.clearEdges();
+		var choice1 = new DialogChoice("Yes");
+		var nextNode1 = get(MyNodeLabels.BreadTalkYes1.toString());
+		node.add(new Edge(choice1, nextNode1));
+		var choice2 = new DialogChoice("No");
+		var nextNode2 = get(MyNodeLabels.BreadTalkNo1.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void BreadTalkYes1() { 
+		var node = get(MyNodeLabels.BreadTalkYes1.toString());
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void BreadTalkNo1() { 
+		var node = get(MyNodeLabels.BreadTalkNo1.toString());
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void GrapeTalk1() { 
+		var node = get(MyNodeLabels.GrapesTalk1.toString());
+		var choice1 = new DialogChoice("Yes");
+		var nextNode1 = get(MyNodeLabels.GrapesTalkYes1.toString());
+		node.add(new Edge(choice1, nextNode1));
+		var choice2 = new DialogChoice("No");
+		var nextNode2 = get(MyNodeLabels.GrapesTalkNo1.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	
+	@BuilderMethod
+	public void GrapeTalkYes1() { 
+		var node = get(MyNodeLabels.GrapesTalkYes1.toString());
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void GrapeTalkNo1() { 
+		var node = get(MyNodeLabels.GrapesTalkNo1.toString());
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void BlackSmithNared() { 
+		var node = get(MyNodeLabels.BlacksmithNar.toString());
+		var choice1 = new CloseNarrationChoice();
+		var nextNode1 = get(MyNodeLabels.BlacksmithAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void BlackSmithActed() { 
+		var node = get(MyNodeLabels.BlacksmithAct.toString());
+		var choice1 = new PlayerInteraction(MyChoiceLabels.Relocated6.toString(), MyStoryEntities.Blackreturndoor, Icons.door, "Go to City");
+		var nextNode1 = get(MyNodeLabels.CityNar.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	
 	
 	
 

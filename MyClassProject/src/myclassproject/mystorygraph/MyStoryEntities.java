@@ -45,7 +45,7 @@ public final class MyStoryEntities {
 	public static final Item evilBook = new Item("EvilBook", ItemTypes.EvilBook);
 	public static final Item magnifyingGlass = new Item("MagnifyingGlass", ItemTypes.MagnifyingGlass);
 	public static final Item apple = new Item("Apple", ItemTypes.Apple);
-	public static final Item bread = new Item("Bread", ItemTypes.Bread);
+	public static final Item bread = new Item("Sword2", ItemTypes.Sword);
 	public static final Item grapes = new Item("Grapes", ItemTypes.PurplePotion);
 	public static final Item compass = new Item("Compass", ItemTypes.Compass);
 	public static final Characters player = new Characters("Player", BodyTypes.D, Clothing.Peasant, HairStyle.Short, Colors.Black, 6);
@@ -64,7 +64,11 @@ public final class MyStoryEntities {
 	public static final Furniture townExit = new Furniture(town, FurnitureTypes.Exit);
 	public static final Furniture SouthEnd = new Furniture(bradge, FurnitureTypes.SouthEnd);
 	public static final Furniture NorthEnd = new Furniture(bradge, FurnitureTypes.NorthEnd);
-	public static final Furniture Dockdoor = new Furniture(city, FurnitureTypes.RedHouseDoor);
+	public static final Furniture Dockdoor = new Furniture(city, FurnitureTypes.EastEnd);
+	public static final Furniture Blackdoor = new Furniture(city, FurnitureTypes.BrownHouseDoor);
+	public static final Furniture Blackreturndoor = new Furniture(blackSmith, FurnitureTypes.Door);
+
+	public static final Furniture Plant = new Furniture(city, FurnitureTypes.Plant);
 	public static final Furniture PortExit = new Furniture(port, FurnitureTypes.Exit);
 	public static final Furniture Bigship = new Furniture(port, FurnitureTypes.BigShip);
 
