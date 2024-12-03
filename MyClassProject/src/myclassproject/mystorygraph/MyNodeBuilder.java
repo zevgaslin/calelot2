@@ -267,7 +267,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var node = get(MyNodeLabels.BlacksmithNar.toString());
 		node.add(new FadeOut()).add(new SetPosition(player, blackSmith)).add(new FadeIn())
 		.add(new NarrationSequence(
-				"The smell of fire fills your nostrils as you enter the blacksmiths shop. “Welcome to my humble forge”, says the Blacksmith. “Please, let me know if you’d like to purchase any of my wares”."));
+				"The smell of fire fills your nostrils as you enter the blacksmiths shop. 'Welcome to my humble forge', says the Blacksmith. 'Please, let me know if you would like to purchase any of my wares'."));
 		
 	}
 
@@ -284,6 +284,41 @@ public class MyNodeBuilder extends NodeBuilder {
 	}
 	//test
 	@BuilderMethod
+	public void PickPocket2() {
+		var node= get(MyNodeLabels.PickPocket2.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("Oh, you again. What a Lovely Day (You steal 20 coins)"),List.of ("Continue")));
+	} 
+	@BuilderMethod
+	public void Kill2() {
+		var node= get(MyNodeLabels.Kill2.toString());		
+		node.clearSequence();
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Attack(player,npc2,true))
+		.add(new DialogSequence(player, npc2, List.of("Ouch :( (You steal my 100 Coins)"),List.of ("Continue"))).add(new Die(npc2));
+	}
+
+	
+	@BuilderMethod
+	public void AlchemistNar() {
+		var node = get(MyNodeLabels.AlchemistNar.toString());
+		node.add(new FadeOut())
+		.add(new SetPosition(player, alchemyShop))
+		.add(new SetPosition(alchemist, Whichloc))
+		.add(new Face(alchemist, player))
+		.add(new Face(player, alchemist))
+		.add(new NarrationSequence(
+				"You enter a small, dingy store on the outskirts of town to find a lady brewing potions in a cauldron in the corner of the shop. “What do you want, mortal?”, says the lady, who appears to be the store’s owner."))
+		.add(new FadeIn());
+		
+	}
+	@BuilderMethod
+	public void AlchemistAct() {
+		var node = get(MyNodeLabels.AlchemistAct.toString());
+		//Zev add whatever you need for pirate path here
+		node.add(new HideNarration());
+	}
+	
+	@BuilderMethod
 	public void DockActions() {
 		var node = get(MyNodeLabels.Dock.toString());
 		//node.add(new SetPosition(npc1, port, "BigStall"));
@@ -291,6 +326,7 @@ public class MyNodeBuilder extends NodeBuilder {
 				"You are greeted by the smell of sea mist and rum as you enter the dock at the edge of town. You see an intimidating swashbuckler sitting by his ship, as well as local city goers fishing off of the dock. 'Argh! Are ye a pirate?' Asks a captain from atop his pirate ship."))
 		.add(new SetPosition(player, port));
 	}
+	
 	
 
 	}

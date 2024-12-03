@@ -67,6 +67,9 @@ public final class MyStoryEntities {
 	public static final Furniture Dockdoor = new Furniture(city, FurnitureTypes.EastEnd);
 	public static final Furniture Blackdoor = new Furniture(city, FurnitureTypes.BrownHouseDoor);
 	public static final Furniture Blackreturndoor = new Furniture(blackSmith, FurnitureTypes.Door);
+	public static final Furniture WhichDoor = new Furniture(city, FurnitureTypes.BlueHouseDoor);
+	public static final Furniture WhichreturnDoor = new Furniture(alchemyShop, FurnitureTypes.Door);
+	public static final Furniture Whichloc = new Furniture(alchemyShop, FurnitureTypes.RightBookcase);
 
 	public static final Furniture Plant = new Furniture(city, FurnitureTypes.Plant);
 	public static final Furniture PortExit = new Furniture(port, FurnitureTypes.Exit);

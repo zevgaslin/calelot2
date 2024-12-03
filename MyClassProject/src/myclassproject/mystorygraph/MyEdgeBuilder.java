@@ -242,6 +242,10 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode5 = get(MyNodeLabels.BlacksmithNar.toString());
 		node.add(new Edge(choice5, nextNode5));
 		
+		var choice8 = new PlayerInteraction(MyChoiceLabels.Relocated8.toString(), MyStoryEntities.WhichDoor, Icons.door, "Go to Alchemy Shop");
+		var nextNode8 = get(MyNodeLabels.AlchemistNar.toString());
+		node.add(new Edge(choice8, nextNode8));
+		
 		var choice2 = new PlayerInteraction(MyChoiceLabels.Talk4.toString(), MyStoryEntities.npc1, Icons.apple, "Buy Apple");
 		var nextNode2 = get(MyNodeLabels.AppleTalk1.toString());
 		node.add(new Edge(choice2, nextNode2));
@@ -253,6 +257,16 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var choice4 = new PlayerInteraction(MyChoiceLabels.Talk6.toString(), MyStoryEntities.npc1, Icons.potion, "Buy Grapes");
 		var nextNode4 = get(MyNodeLabels.GrapesTalk1.toString());
 		node.add(new Edge(choice4, nextNode4));
+		
+		var choice6 = new PlayerInteraction(MyChoiceLabels.Steal2.toString(), MyStoryEntities.npc2, Icons.kneel, "Pickpocket");
+		var nextNode6 = get(MyNodeLabels.PickPocket2.toString());
+		node.add(new Edge(choice6, nextNode6));
+		
+		var choice7 = new PlayerInteraction(MyChoiceLabels.Kill2.toString(), MyStoryEntities.npc2, Icons.skull, "Mug");
+		var nextNode7 = get(MyNodeLabels.Kill2.toString());
+		node.add(new Edge(choice7, nextNode7));
+		
+		
 		
 	}
 	
@@ -348,6 +362,38 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode1 = get(MyNodeLabels.CityNar.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	@BuilderMethod
+	public void PickPocket2() {
+		var node = get(MyNodeLabels.PickPocket2.toString());
+		node.clearEdges();
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void Kill2() {
+		var node = get(MyNodeLabels.Kill2.toString());
+		node.clearEdges();
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	
+	@BuilderMethod
+	public void AlchemistNarration() {
+		var node = get(MyNodeLabels.AlchemistNar.toString());
+		var choice1 = new CloseNarrationChoice();
+		var nextNode1 = get(MyNodeLabels.AlchemistAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void AlchemistActions() {
+		var node = get(MyNodeLabels.AlchemistAct.toString());
+		var choice1 = new PlayerInteraction(MyChoiceLabels.Relocated9.toString(), MyStoryEntities.WhichreturnDoor, Icons.door, "Go to City");
+		var nextNode1 = get(MyNodeLabels.CityNar.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	
 	
 	
 	

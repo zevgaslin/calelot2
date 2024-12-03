@@ -37,6 +37,10 @@ public enum MyNodeLabels{
 	GrapesTalkNo1,
 	BlacksmithNar,
 	BlacksmithAct,
+	PickPocket2,
+	Kill2,
+	AlchemistNar,
+	AlchemistAct,
 	
 	Twinkie,//All Choices Made
 	Apple,//All Choices Made

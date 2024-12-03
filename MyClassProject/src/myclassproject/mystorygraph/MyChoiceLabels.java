@@ -25,7 +25,8 @@ public enum MyChoiceLabels {
 	Relocated10,
 	Relocated11,
 	Relocated12,
-	
+	Kill2,
+	Steal2,
 	Wall, 
 	goToTown, 
 	TownGeneralStore, 
