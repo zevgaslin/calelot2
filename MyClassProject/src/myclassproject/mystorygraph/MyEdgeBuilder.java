@@ -150,10 +150,10 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode2 = get(MyNodeLabels.GrapesTalkNo.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
-	/*
+	
 	@BuilderMethod
 	public void GrapeTalkYes() { 
-		var node = get(MyNodeLabels.BreadTalkYes.toString());
+		var node = get(MyNodeLabels.GrapesTalkYes.toString());
 		node.clearEdges();
 		var choice1 = new DialogChoice("Continue");
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
@@ -161,7 +161,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	}
 	@BuilderMethod
 	public void GrapeTalkNo() { 
-		var node = get(MyNodeLabels.BreadTalkNo.toString());
+		var node = get(MyNodeLabels.GrapesTalkNo.toString());
 		node.clearEdges();
 		var choice1 = new DialogChoice("Continue");
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
@@ -184,7 +184,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		node.add(new Edge(choice1, nextNode1));
 	}
 	
-	
+	/*
 	//Joshua Haddad Code
 	@BuilderMethod
 	public void atGate() {
