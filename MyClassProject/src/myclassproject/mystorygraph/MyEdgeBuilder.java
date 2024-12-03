@@ -71,16 +71,16 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode3 = get(MyNodeLabels.GrapesTalk.toString());
 		node.add(new Edge(choice3, nextNode3));
 	
-		/*
+		
 		var choice4 = new PlayerInteraction(MyChoiceLabels.Steal.toString(), MyStoryEntities.npc2, Icons.kneel, "Pickpocket");
 		var nextNode4 = get(MyNodeLabels.PickPocket1.toString());
 		node.add(new Edge(choice4, nextNode4));
 		var choice5 = new PlayerInteraction(MyChoiceLabels.Kill.toString(), MyStoryEntities.npc2, Icons.skull, "Mug");
 		var nextNode5 = get(MyNodeLabels.Kill1.toString());
 		node.add(new Edge(choice5, nextNode5));
-		var choice6 = new PlayerInteraction(MyStoryEntities.player, MyChoiceLabels.Relocate.toString(), MyStoryEntities.townExit);
-		var nextNode6 =  get(MyNodeLabels.Bridge.toString());
-		node.add(new Edge(choice6, nextNode6));*/
+		var choice6 = new PlayerInteraction(MyStoryEntities.player, MyChoiceLabels.Relocated.toString(), MyStoryEntities.townExit);
+		var nextNode6 =  get(MyNodeLabels.Bradge.toString());
+		node.add(new Edge(choice6, nextNode6));
 
 	}
 	
@@ -162,7 +162,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
-	/*
+	
 	@BuilderMethod
 	public void PickPocket() {
 		var node = get(MyNodeLabels.PickPocket1.toString());
@@ -179,27 +179,41 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
-	*/
-	/*
+
+	
 	//Joshua Haddad Code
 	@BuilderMethod
 	public void atGate() {
-		var node = get(MyNodeLabels.Bridge.toString());
+		var node = get(MyNodeLabels.Bradge.toString());
 		
 		var choice1 = new PlayerInteraction(MyChoiceLabels.Talk.toString(), MyStoryEntities.gaurd, Icons.talk, "Talk to Guard");
 		var nextNode1 = get(MyNodeLabels.GuardTalk.toString());
 		node.add(new Edge(choice1, nextNode1));
 		
-		var choice2 = new PlayerInteraction(MyChoiceLabels.Relocate.toString(), MyStoryEntities.SouthEnd, Icons.exit, "Enter City");
-		var nextNode2 = get(MyNodeLabels.City.toString());
-		node.add(new Edge(choice2, nextNode2));
+		//var choice2 = new PlayerInteraction(MyChoiceLabels.Relocat.toString(), MyStoryEntities.SouthEnd, Icons.exit, "Enter City");
+		//var nextNode2 = get(MyNodeLabels.City.toString());
+		//node.add(new Edge(choice2, nextNode2));
 	}
+	@BuilderMethod
+	public void GuardTalk() {
+		var node = get(MyNodeLabels.GuardTalk.toString());
+		var choice1 = new DialogChoice("Fine");
+		var nextNode1 = get(MyNodeLabels.GuardTalkYes.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Fine");
+		var nextNode2 = get(MyNodeLabels.GuardTalkNo.toString());
+		node.add(new Edge(choice2, nextNode2));
+		
+	}
+		
+	
 	@BuilderMethod
 	public void GuardTalkYes() {
 		var node = get(MyNodeLabels.GuardTalkYes.toString());
 		
 		var choice1 = new DialogChoice("Continue");
-		var nextNode1 = get(MyNodeLabels.City.toString());
+		var nextNode1 = get(MyNodeLabels.CityNar.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
 	@BuilderMethod
@@ -207,10 +221,18 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var node = get(MyNodeLabels.GuardTalkNo.toString());
 		
 		var choice2 = new DialogChoice("Continue");
-		var nextNode2 = get(MyNodeLabels.Bridge.toString());
+		var nextNode2 = get(MyNodeLabels.Bradge.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
-	*/
+	@BuilderMethod
+	public void CityNar() {
+		var node = get(MyNodeLabels.CityNar.toString());
+		var choice1 = new CloseNarrationChoice();
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	
+	
 
 
 	

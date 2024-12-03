@@ -39,7 +39,7 @@ public final class MyStoryEntities {
 	public static final Place greatHall = new Place(" GreatHall", PlaceTypes.GreatHall);
 	public static final Place port = new Place("Port", PlaceTypes.Port);
 	public static final Place storage = new Place("Storage", PlaceTypes.Storage);
-	public static final Place bridge = new Place("Bridge", PlaceTypes.Bridge);
+	public static final Place bradge = new Place("Bridge", PlaceTypes.Bridge);
 	public static final Item sword = new Item("Sword", ItemTypes.Sword);
 	public static final Item coin = new Item("Coin", ItemTypes.Coin);
 	public static final Item evilBook = new Item("EvilBook", ItemTypes.EvilBook);
@@ -62,8 +62,8 @@ public final class MyStoryEntities {
 	public static final Furniture townStall = new Furniture(town, FurnitureTypes.Stall);
 	public static final Furniture townLog = new Furniture(town, FurnitureTypes.RightLog);
 	public static final Furniture townExit = new Furniture(town, FurnitureTypes.Exit);
-	public static final Furniture SouthEnd = new Furniture(bridge, FurnitureTypes.SouthEnd);
-	public static final Furniture NorthEnd = new Furniture(bridge, FurnitureTypes.NorthEnd);
+	public static final Furniture SouthEnd = new Furniture(bradge, FurnitureTypes.SouthEnd);
+	public static final Furniture NorthEnd = new Furniture(bradge, FurnitureTypes.NorthEnd);
 	public static final Furniture PortExit = new Furniture(port, FurnitureTypes.Exit);
 	public static final Furniture Bigship = new Furniture(port, FurnitureTypes.BigShip);
 

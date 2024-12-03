@@ -12,7 +12,7 @@ public enum MyChoiceLabels {
 	Talk3,
 	Kill,
 	Apple,
-	
+	Relocated,
 	Wall, 
 	goToTown, 
 	TownGeneralStore, 

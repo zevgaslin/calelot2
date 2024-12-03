@@ -28,14 +28,15 @@ public class MyNodeBuilder extends NodeBuilder {
 	 * its label. The method adds Camelot actions that execute in order when
 	 * visiting that node. These methods must have a BuilderMethod annotation.
 	 */
-
+//test
 	
 // Joshua Haddad
 	@BuilderMethod
 	public void rootActions() {
 		var root = get(MyNodeLabels.root.toString());
+		root.clearSequence();
 		root.add(new CreateAll(List.of(farm, town, city, blackSmith, castleCrossroads, port, ruins, greatHall,
-				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, magnifyingGlass, apple)))
+				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, magnifyingGlass, apple/*,bread,grapes*/)))
 				.add(new CreateCharacterSequence(player)).add(new CreateCharacterSequence(bandit))
 				.add(new CreateCharacterSequence(npc1)).add(new CreateCharacterSequence(npc2))
 				.add(new CreateCharacterSequence(blacksmith)).add(new CreateCharacterSequence(alchemist))
@@ -45,7 +46,7 @@ public class MyNodeBuilder extends NodeBuilder {
 				.add(new SetPosition(npc1, town)).add(new SetPosition(npc2, town))
 				.add(new SetPosition(blacksmith, blackSmith)).add(new SetPosition(alchemist, alchemyShop))
 				.add(new SetPosition(king, greatHall))
-				.add(new SetPosition(gaurd, bridge))
+				.add(new SetPosition(gaurd, bradge))
 				.add(new SetPosition(pirate, port)).add(new SetCameraFocus(player))
 				.add(new SetPosition(merchant, storage))
 		.add(new SetPosition(merchant, storage)).add(new SetPosition(bandit, dungeon)).add(new ShowMenu());
@@ -155,21 +156,18 @@ public class MyNodeBuilder extends NodeBuilder {
 
 	
 	//Bridge
-	/*
+	
 	@BuilderMethod
-	public void Bridge() {
-		var node= get(MyNodeLabels.Bridge.toString());		
-		node.clearSequence();
-		node.add(new SetPosition(gaurd, SouthEnd)).add(new FadeOut()).add(new SetPosition(player, bridge)).add(new FadeIn())
+	public void Bradge() {
+		var node= get(MyNodeLabels.Bradge.toString());		
+		node/*.add(new SetPosition(gaurd, SouthEnd))*/.add(new FadeOut()).add(new SetPosition(player, bradge)).add(new FadeIn())
 		.add(new HideDialog()).add(new HideNarration());
 	}
-	*/
-	/*	
+	
 	
 	@BuilderMethod
 	public void GuardTalk() {
 		var node= get(MyNodeLabels.GuardTalk.toString());		
-		node.clearSequence();
 		node.add(new HideDialog()).add(new WalkTo(player,gaurd))
 		.add(new DialogSequence(player, npc1, List.of("Halt!!! Pay me 20 coins to pass"),List.of("Fine","No")));
 	}
@@ -177,30 +175,33 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void guardTalkYes() {
 		var node= get(MyNodeLabels.GuardTalkYes.toString());		
-		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Thanks"),null));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Thanks"),List.of ("Continue")));
 	}
 	@BuilderMethod
 	public void guardTalkNo() {
 		var node= get(MyNodeLabels.GuardTalkNo.toString());		
-		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Then no passing"),null));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Then no passing"),List.of ("Continue")));
 	}
-	*/
-}
 	
 	
-
- /*
+	
 //Zev Gaslin
 	@BuilderMethod
-	public void CityActions() {
-		var node = get(MyNodeLabels.City.toString());
-		// node.add(new CreateAll(List.of(npc1, gaurd)));
-		node.add(new NarrationSequence(
+	public void CityNar() {
+		var node = get(MyNodeLabels.CityNar.toString());
+		node.add(new HideDialog()).add(new DisableInput()).add(new FadeOut()).add(new SetPosition(player, city)).add(new FadeIn())
+		.add(new NarrationSequence(
 				"As you pass through the pearly gates of the city, you are taken aback by the hustle and bustle of the beautiful Camelot City. You are excited by the prospect of exploring every corner of the mysterious new location, but you know you must focus on your ultimate goal; getting your land back.\n"));
 	}
+	@BuilderMethod
+	public void CityAct() {
+		var node = get(MyNodeLabels.CityAct.toString());
+		node.add(new HideDialog()).add(new HideNarration()).add(new EnableInput());
+	}
+}
 
+
+/*
 //Jaedan Curcio
 	@BuilderMethod
 	public void TownBeggingActions() {

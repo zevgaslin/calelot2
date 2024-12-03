@@ -19,11 +19,13 @@ public enum MyNodeLabels{
 	PickPocket1,
 	Kill1,
 	Town2,
-	Bridge,
+	Bradge,
 	GuardTalk,
 	GuardTalkYes,
 	GuardTalkNo,
 	Bridge2,
+	CityNar,
+	CityAct,
 	
 	
 	Twinkie,//All Choices Made
