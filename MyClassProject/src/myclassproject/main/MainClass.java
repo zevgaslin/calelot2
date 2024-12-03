@@ -4,8 +4,9 @@ import com.storygraph.Story;
 
 import myclassproject.mystorygraph.MyGraph;
 import myclassproject.mystorygraph.MyNodeLabels;
+import myclassproject.questexample.NodeLabels;
 import myclassproject.questexample.QuestGraph;
-import myclassproject.testgraph.TestGraph;
+//import myclassproject.testgraph.TestGraph;
 public class MainClass {
 
 	//This is the start of your program

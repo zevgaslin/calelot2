@@ -61,7 +61,15 @@ public final class MyStoryEntities {
 	public static final Furniture farmExit = new Furniture(farm, FurnitureTypes.Exit);
 	public static final Furniture townStall = new Furniture(town, FurnitureTypes.Stall);
 	public static final Furniture townLog = new Furniture(town, FurnitureTypes.RightLog);
+	public static final Furniture townExit = new Furniture(town, FurnitureTypes.Exit);
 	public static final Furniture SouthEnd = new Furniture(bridge, FurnitureTypes.SouthEnd);
+	public static final Furniture NorthEnd = new Furniture(bridge, FurnitureTypes.NorthEnd);
+	public static final Furniture PortExit = new Furniture(port, FurnitureTypes.Exit);
+	public static final Furniture Bigship = new Furniture(port, FurnitureTypes.BigShip);
+
+
+
+	
 
 
 }

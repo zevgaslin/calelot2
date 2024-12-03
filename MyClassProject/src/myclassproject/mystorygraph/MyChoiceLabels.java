@@ -7,6 +7,9 @@ public enum MyChoiceLabels {
 	Beat,
 	Steal,
 	Talk,
+	Talk1,
+	Talk2,
+	Talk3,
 	Kill,
 	Apple,
 	

@@ -4,19 +4,19 @@ import java.util.List;
 
 
 import com.playerInput.*;
-import com.playerInput.PlayerInteraction.Icons;
+import static com.playerInput.PlayerInteraction.Icons;
 import com.storygraph.BuilderMethod;
 import com.storygraph.Edge;
 import com.storygraph.NodeBuilder;
 import com.storygraph.Node;
 import myclassproject.mystorygraph.MyStoryEntities;
 //import myclassproject.questexample.DialogChoice;
-import myclassproject.questexample.NodeLabels;
+//import myclassproject.questexample.NodeLabels;
 
 import com.playerInput.CloseNarrationChoice;
 //import myclassproject.questexample.CloseNarrationChoice;
 
-public class MyEdgeBuilder extends MyNodeBuilder {
+public class MyEdgeBuilder extends NodeBuilder {
 	/**
 	 * Initializes the list of story graph nodes.
 	 * @param list A list of all story graph nodes.
@@ -24,7 +24,6 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 	public MyEdgeBuilder(List<Node> list) {
 		super(list);
 	}
-	//Test
 
 	/**
 	 * Write a method for each node. 
@@ -38,7 +37,6 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 	@BuilderMethod
 	public void rootEdges() { 
 		var root = get(MyNodeLabels.root.toString());
-		root.clearEdges();
 		var choice = new MenuChoice(MenuChoice.Options.Start);
 		var nextNode = get(MyNodeLabels.FarmNar.toString());
 		root.add(new Edge(choice, nextNode));
@@ -46,7 +44,6 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 	@BuilderMethod
 	public void atFarmNarEdges() { 
 		var node = get(MyNodeLabels.FarmNar.toString());
-		node.clearEdges();
 		var choice = new CloseNarrationChoice();
 		var nextNode = get(MyNodeLabels.FarmAct.toString());
 		node.add(new Edge(choice, nextNode));
@@ -54,32 +51,39 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 	@BuilderMethod
 	public void atFarmActEdges() { 
 		var node = get(MyNodeLabels.FarmAct.toString());
-		node.clearEdges();
-		var choice = new PlayerInteraction(MyChoiceLabels.Relocate.toString(), MyStoryEntities.farmExit, Icons.exit, "Go to the Town");
+		var choice = new PlayerInteraction(MyStoryEntities.player, MyChoiceLabels.Relocate.toString(), MyStoryEntities.farmExit);
 		var nextNode = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice, nextNode));
 	}
-	
+
 	@BuilderMethod
 	public void atTownactEdges() { 
 		var node = get(MyNodeLabels.Town1.toString());
-		node.clearEdges();
-		var choice1 = new PlayerInteraction(MyChoiceLabels.Talk.toString(), MyStoryEntities.npc1, Icons.apple, "Buy Apple");
+		var choice1 = new PlayerInteraction(MyChoiceLabels.Talk1.toString(), MyStoryEntities.npc1, Icons.apple, "Buy Apple");
 		var nextNode1 = get(MyNodeLabels.AppleTalk.toString());
 		node.add(new Edge(choice1, nextNode1));
-		var choice2 = new PlayerInteraction(MyChoiceLabels.Talk.toString(), MyStoryEntities.npc1, Icons.bread, "Buy Bread");
+		
+		var choice2 = new PlayerInteraction(MyChoiceLabels.Talk2.toString(), MyStoryEntities.npc1, Icons.bread, "Buy Bread");
 		var nextNode2 = get(MyNodeLabels.BreadTalk.toString());
 		node.add(new Edge(choice2, nextNode2));
-		var choice3 = new PlayerInteraction(MyChoiceLabels.Talk.toString(), MyStoryEntities.npc1, Icons.potion, "Buy Grapes");
+		
+		var choice3 = new PlayerInteraction(MyChoiceLabels.Talk3.toString(), MyStoryEntities.npc1, Icons.potion, "Buy Grapes");
 		var nextNode3 = get(MyNodeLabels.GrapesTalk.toString());
 		node.add(new Edge(choice3, nextNode3));
+	
+		/*
 		var choice4 = new PlayerInteraction(MyChoiceLabels.Steal.toString(), MyStoryEntities.npc2, Icons.kneel, "Pickpocket");
 		var nextNode4 = get(MyNodeLabels.PickPocket1.toString());
 		node.add(new Edge(choice4, nextNode4));
 		var choice5 = new PlayerInteraction(MyChoiceLabels.Kill.toString(), MyStoryEntities.npc2, Icons.skull, "Mug");
 		var nextNode5 = get(MyNodeLabels.Kill1.toString());
 		node.add(new Edge(choice5, nextNode5));
+		var choice6 = new PlayerInteraction(MyStoryEntities.player, MyChoiceLabels.Relocate.toString(), MyStoryEntities.townExit);
+		var nextNode6 =  get(MyNodeLabels.Bridge.toString());
+		node.add(new Edge(choice6, nextNode6));*/
+
 	}
+	
 	@BuilderMethod
 	public void AppleTalk() { 
 		var node = get(MyNodeLabels.AppleTalk.toString());
@@ -91,6 +95,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode2 = get(MyNodeLabels.AppleTalkNo.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	@BuilderMethod
 	public void AppleTalkYes() { 
 			var node = get(MyNodeLabels.AppleTalkYes.toString());
 			node.clearEdges();
@@ -98,6 +103,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	@BuilderMethod
 	public void AppleTalkNo() { 
 			var node = get(MyNodeLabels.AppleTalkNo.toString());
 			node.clearEdges();
@@ -105,6 +111,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	
 	@BuilderMethod
 	public void BreadTalk() { 
 		var node = get(MyNodeLabels.BreadTalk.toString());
@@ -116,6 +123,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode2 = get(MyNodeLabels.BreadTalkNo.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	@BuilderMethod
 	public void BreadTalkYes() { 
 		var node = get(MyNodeLabels.BreadTalkYes.toString());
 		node.clearEdges();
@@ -123,6 +131,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	@BuilderMethod
 	public void BreadTalkNo() { 
 		var node = get(MyNodeLabels.BreadTalkNo.toString());
 		node.clearEdges();
@@ -130,6 +139,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	@BuilderMethod
 	public void GrapeTalk() { 
 		var node = get(MyNodeLabels.GrapesTalk.toString());
 		node.clearEdges();
@@ -140,6 +150,8 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode2 = get(MyNodeLabels.GrapesTalkNo.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	/*
+	@BuilderMethod
 	public void GrapeTalkYes() { 
 		var node = get(MyNodeLabels.BreadTalkYes.toString());
 		node.clearEdges();
@@ -147,6 +159,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	@BuilderMethod
 	public void GrapeTalkNo() { 
 		var node = get(MyNodeLabels.BreadTalkNo.toString());
 		node.clearEdges();
@@ -154,6 +167,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	@BuilderMethod
 	public void PickPocket() {
 		var node = get(MyNodeLabels.PickPocket1.toString());
 		node.clearEdges();
@@ -161,6 +175,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	@BuilderMethod
 	public void Kill() {
 		var node = get(MyNodeLabels.Kill1.toString());
 		node.clearEdges();
@@ -171,6 +186,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 	
 	
 	//Joshua Haddad Code
+	@BuilderMethod
 	public void atGate() {
 		var node = get(MyNodeLabels.Bridge.toString());
 		
@@ -182,6 +198,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode2 = get(MyNodeLabels.City.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	@BuilderMethod
 	public void GuardTalkYes() {
 		var node = get(MyNodeLabels.GuardTalkYes.toString());
 		
@@ -189,6 +206,7 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode1 = get(MyNodeLabels.City.toString());
 		node.add(new Edge(choice1, nextNode1));
 	}
+	@BuilderMethod
 	public void GuardTalNo() {
 		var node = get(MyNodeLabels.GuardTalkNo.toString());
 		
@@ -196,12 +214,12 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		var nextNode2 = get(MyNodeLabels.Bridge.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
-	
+	*/
 
 
 	
 	
-	
+	/*
 	public void atCity() {
 		var node = get(MyNodeLabels.City.toString());
 
@@ -587,6 +605,6 @@ public class MyEdgeBuilder extends MyNodeBuilder {
 		
 		node.add(new Edge(choice, nextNode));
 	}
-	
+	*/
 }
 	
