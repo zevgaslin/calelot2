@@ -1,4 +1,4 @@
-package myclassproject.testgraph;
+/*package myclassproject.testgraph;
 
 import static myclassproject.questexample.QuestStoryEntities.cityExit;
 import static myclassproject.questexample.QuestStoryEntities.player;
@@ -31,4 +31,4 @@ public class TestEdgeBuilder extends QuestEdgeBuilder {
 
 	
 }
-//Test
+*/
