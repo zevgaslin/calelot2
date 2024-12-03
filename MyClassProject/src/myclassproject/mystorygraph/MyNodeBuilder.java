@@ -282,7 +282,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	.add(new Dance(blacksmith))
 	.add(new Give(blacksmith, sword, player));
 	}
-	
+	//test
 	@BuilderMethod
 	public void DockActions() {
 		var node = get(MyNodeLabels.Dock.toString());
