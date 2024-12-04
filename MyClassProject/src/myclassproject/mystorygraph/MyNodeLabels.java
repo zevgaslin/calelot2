@@ -62,6 +62,15 @@ public enum MyNodeLabels{
 	FindBird,
 	PirateGoodEnding,
 
+	InCastle,
+	TalkingToKing,
+	BuyTalk,
+	BuyEnd,
+	CastleWin,
+	BuyAllTalk,
+	BuyAllEnd,
+	KingFight,
+	
 	
 	
 	Twinkie,//All Choices Made

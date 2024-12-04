@@ -451,11 +451,52 @@ public class MyNodeBuilder extends NodeBuilder {
 		node.add(new NarrationSequence("You sail off into the sunset. The end"));
 	}
 	
-
-
+	@BuilderMethod
+	public void InDaCastle() {
+		var node = get(MyNodeLabels.InCastle.toString());
+		node.add(new HideDialog());
+		}
 	
+	@BuilderMethod
+	public void TalkingToKing() {
+		var node = get(MyNodeLabels.TalkingToKing.toString());
+		node.add(new Face(king,player));
+		node.add(new DialogSequence(player, king, List.of("Who dares come into the great throne room of the great king, king  Bartholomew the great?!?!" + "State your buisness imediatly or face my wrath!"), List.of("Im here to fight you! This is revenge for rasing my taxes", "Hold on there I just want to buy my land back.($10000)","Im here to buy your whole kingdom($1000000)")));
+		}
+	@BuilderMethod
+	public void BuyLandBackTalk() {
+		var node = get(MyNodeLabels.BuyTalk.toString());
+		node.add(new DialogSequence(player, king, List.of("Very well, you have earned enough money to buy your land back. Capitalism wins yet again!"), List.of("Continue")));
+		}
+	@BuilderMethod
+	public void BuyLandEnding() {
+		var node = get(MyNodeLabels.BuyEnd.toString());
+		node.add(new NarrationSequence("You return to your farm, living out the rest of your days in peace. The king never dared approach your lands again. In the far future you sit on your porch at sunset, rocking back and fourth, proud to have this clod of earth to call your own." + "The End."));
+	}
+	@BuilderMethod
+	public void BuyAllLandTalk() {
+		var node = get(MyNodeLabels.BuyAllTalk.toString());
+		node.add(new DialogSequence(player, king, List.of("Really, you would be willing to buy this kingdom off me?"+"Honestly, I never did like being king always... I really just did it for the money."+"Very well I will sell you my kingdom"), List.of("Continue")));
+		}
+	@BuilderMethod
+	public void BuyAllLandEnding() {
+		var node = get(MyNodeLabels.BuyAllEnd.toString());
+		node.add(new NarrationSequence("King Bartholomew abdicates his throne, giving you full ownership of the kingdom and all its properties. King Bartholomew leaves, never to be seen again, having spent the rest of his life in a state of quite solitude on a farm in the furthest recesses of the countryside." + "Meanwhile, you are absolutely terrible at running your newly found kindom. Begging and farming were your main areas of expertise. You find yourself wholeheartedly unable to perform the managerial tasks required to be king. Due to your shortcomings, you quickly run the kingdom into anarchy and die unceremoniously of a heart attack due to the stress during a peasant revolt outside your castle." + "The End."));
+	}
 
-	
+	@BuilderMethod
+	public void KingFightAct() {
+		var node = get(MyNodeLabels.KingFight.toString());
+		node.add(new HideDialog()).add(new Face(king, player)).add(new Draw(king, sword)).add(new Draw(player, sword)).add(new Attack(player, king, true));
+		node.add(new NarrationSequence("You won the fight and defeated the King! Before you coudl kill him he offerd you your land back in exchange for his life. You happily accept."));
+	}
+
+	@BuilderMethod
+	public void CastleWinning() {
+		var node = get(MyNodeLabels.CastleWin.toString());
+		node.add(new HideNarration());
+		node.add(new ShowCredits());
+	}
 		
 		
 		
