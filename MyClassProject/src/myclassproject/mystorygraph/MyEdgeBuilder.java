@@ -588,10 +588,44 @@ public class MyEdgeBuilder extends NodeBuilder {
 		node.add(new Edge(choice1, nextNode1));
 	}
 
-
-
-	
-	
+	@BuilderMethod
+	public void AproachKing() {
+		var node = get(MyNodeLabels.InCastle.toString());
+		var choice = new PlayerInteraction(MyChoiceLabels.TalkToKing.toString(), MyStoryEntities.king, Icons.talk, "Talk to the King");
+		var nextNode = get(MyNodeLabels.TalkingToKing.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	@BuilderMethod
+	public void TalkTuaKing(){
+		var node = get(MyNodeLabels.TalkingToKing.toString());
+		var choice = new DialogChoice("Im here to fight you! This is revenge for rasing my taxes");
+		var nextNode = get(MyNodeLabels.KingFight.toString());
+		node.add(new Edge(choice, nextNode));
+		var choice1 = new DialogChoice("Hold on there I just want to buy my land back.($10000)");
+		var nextNode1 = get(MyNodeLabels.BuyTalk.toString());
+		node.add(new Edge(choice1, nextNode1));
+		var choice2 = new DialogChoice("Im here to buy your whole kingdom($1000000)");
+		var nextNode2 = get(MyNodeLabels.BuyAllTalk.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void BuyLandTalk(){
+		var node = get(MyNodeLabels.BuyTalk.toString());
+		var choice = new DialogChoice("Continue");
+		var nextNode = get(MyNodeLabels.CastleWin.toString());
+	}
+	@BuilderMethod
+	public void BuyAllTalk(){
+		var node = get(MyNodeLabels.BuyAllTalk.toString());
+		var choice = new DialogChoice("Continue");
+		var nextNode = get(MyNodeLabels.CastleWin.toString());
+	}
+	@BuilderMethod
+	public void KingFightEnd(){
+		var node = get(MyNodeLabels.KingFight.toString());
+		var choice = new CloseNarrationChoice();
+		var nextNode = get(MyNodeLabels.CastleWin.toString());
+	}
 	/*
 	public void atCity() {
 		var node = get(MyNodeLabels.City.toString());

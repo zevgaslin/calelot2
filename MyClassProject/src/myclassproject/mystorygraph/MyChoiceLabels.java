@@ -37,6 +37,8 @@ public enum MyChoiceLabels {
 	TalkToBird,
 	TalkToPirate,
 
+	TalkToKing,
+	
 	
 	
 	Wall, 
