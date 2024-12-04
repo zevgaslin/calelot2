@@ -39,6 +39,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		root.add(new CreateAll(List.of(farm, town, city, blackSmith, castleCrossroads, port, ruins, greatHall,
 				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, apple, bread, grapes, magnifyingGlass, bird, parrot))
 				.add(new CreateCharacterSequence(player)).add(new CreateCharacterSequence(bandit))
+				.add(new SetTitle("The Adventures of Grungus"))
 				.add(new CreateCharacterSequence(npc1)).add(new CreateCharacterSequence(npc2))
 				.add(new CreateCharacterSequence(blacksmith)).add(new CreateCharacterSequence(alchemist))
 				.add(new CreateCharacterSequence(king)).add(new CreateCharacterSequence(gaurd))
@@ -352,8 +353,13 @@ public class MyNodeBuilder extends NodeBuilder {
 		var node = get(MyNodeLabels.Crossroads.toString());
 		node.add(new HideDialog()).add(new FadeOut()).add(new SetPosition(player,castleCrossroads))
 		.add(new FadeIn());
-	
 	}
+	
+	//public void Castle() {
+		
+		
+		
+	//}
 	
 	@BuilderMethod
 	public void DockNar() {
