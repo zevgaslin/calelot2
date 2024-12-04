@@ -42,7 +42,7 @@ public class MyNodeBuilder extends NodeBuilder {
 				.add(new CreateCharacterSequence(blacksmith)).add(new CreateCharacterSequence(alchemist))
 				.add(new CreateCharacterSequence(king)).add(new CreateCharacterSequence(gaurd))
 				.add(new CreateCharacterSequence(pirate)).add(new CreateCharacterSequence(merchant))
-				.add(new SetPosition(player, farm)).add(new SetPosition(bandit, dungeon))
+				.add(new SetPosition(bandit, dungeon))
 				.add(new SetPosition(npc1, town)).add(new SetPosition(npc2, town))
 				.add(new SetPosition(blacksmith, blackSmith)).add(new SetPosition(alchemist, alchemyShop))
 				.add(new SetPosition(king, greatHall))
@@ -51,11 +51,12 @@ public class MyNodeBuilder extends NodeBuilder {
 				.add(new SetPosition(merchant, storage))
 		.add(new SetPosition(merchant, storage)).add(new SetPosition(bandit, dungeon)).add(new ShowMenu()));
 	}
+	//test
 // Joshua Haddad
 	@BuilderMethod
 	public void FarmNarration() {
 		var node = get(MyNodeLabels.FarmNar.toString());
-		node.add(new HideMenu()).add(new HideNarration())
+		node.add(new FadeOut()).add(new SetPosition(player, farm)).add(new HideMenu()).add(new HideNarration()).add(new FadeIn())
 		.add(new NarrationSequence("The evil king Gorlock hath raised taxes upon thy farm, and you could not afford the new fees. As such, Gorlock sent his goons to roughen you up and repossess your family farm! You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidated buildings and broken people. You know what to do next. \n"));
 			}
 	@BuilderMethod
@@ -150,8 +151,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void Kill() {
 		var node= get(MyNodeLabels.Kill1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Attack(player,npc2,true))
-		.add(new DialogSequence(player, npc2, List.of("Ouch :( (You steal my 100 Coins)"),List.of ("Continue"))).add(new Die(npc2));
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new DialogSequence(player, npc2, List.of("A scuffule ensues ~10 Health Required to Win & Escape~","Reward: 20 Coins"),List.of ("Win","Lose"))).add(new Attack(player,npc2,true));
 	}
 
 	
@@ -160,7 +160,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void Bradge() {
 		var node= get(MyNodeLabels.Bradge.toString());		
-		node/*.add(new SetPosition(gaurd, SouthEnd))*/.add(new FadeOut()).add(new SetPosition(player, bradge)).add(new FadeIn())
+		node/*.add(new SetPosition(gaurd, EastEnd))*/.add(new FadeOut()).add(new SetPosition(player, bradge)).add(new FadeIn())
 		.add(new HideDialog()).add(new HideNarration());
 	}
 	
@@ -169,18 +169,18 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void GuardTalk() {
 		var node= get(MyNodeLabels.GuardTalk.toString());		
 		node.add(new HideDialog()).add(new WalkTo(player,gaurd))
-		.add(new DialogSequence(player, npc1, List.of("Halt!!! Pay me 20 coins to pass"),List.of("Fine","No")));
+		.add(new DialogSequence(player, gaurd, List.of("Halt!!! Pay me 20 coins to pass"),List.of("Fine","No")));
 	}
 		
 	@BuilderMethod
 	public void guardTalkYes() {
 		var node= get(MyNodeLabels.GuardTalkYes.toString());		
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Thanks"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, gaurd, List.of("Thanks"),List.of ("Continue")));
 	}
 	@BuilderMethod
 	public void guardTalkNo() {
 		var node= get(MyNodeLabels.GuardTalkNo.toString());		
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Then no passing"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, gaurd, List.of("Then no passing"),List.of ("Continue")));
 	}
 	
 	
@@ -294,7 +294,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var node= get(MyNodeLabels.Kill2.toString());		
 		node.clearSequence();
 		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Attack(player,npc2,true))
-		.add(new DialogSequence(player, npc2, List.of("Ouch :( (You steal my 100 Coins)"),List.of ("Continue"))).add(new Die(npc2));
+		.add(new DialogSequence(player, npc2, List.of("A scuffule ensues ~20 Health Required to Win & Escape~","Reward: 100 Coins"),List.of ("Win","Lose"))).add(new Attack(player,npc2,true));
 	}
 
 	
@@ -314,10 +314,39 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void AlchemistAct() {
 		var node = get(MyNodeLabels.AlchemistAct.toString());
-		//Zev add whatever you need for pirate path here
-		node.add(new HideNarration());
+		node.add(new HideNarration()).add(new HideDialog());
+	}
+	@BuilderMethod
+	public void WhichTalk() {
+		var node = get(MyNodeLabels.WhichTalk.toString());
+		node.add(new HideDialog()).add(new WalkTo(player,alchemist)).add(new DialogSequence(player, alchemist, List.of("Would you like a cursed book ~Warning may be cursed~"),List.of ("Yes","No")));
+	}
+	@BuilderMethod
+	public void WhichTalkYes() {
+		var node = get(MyNodeLabels.WhichTalkYes.toString());
+		node.add(new HideDialog()).add(new DialogSequence(player, alchemist, List.of("HeHeHeHeHeHe"),List.of ("Continue"))).add(new Take(player, evilBook, alchemist));
+
+	}
+	@BuilderMethod
+	public void WhichTalkNo() {
+		var node = get(MyNodeLabels.WhichTalkNo.toString());
+		node.add(new HideDialog()).add(new DialogSequence(player, alchemist, List.of("Aw Shucks"),List.of ("Continue")));
 	}
 	
+	@BuilderMethod
+	public void Wish() {
+		var node = get(MyNodeLabels.Wish.toString());
+		node.add(new HideDialog()).add(new DisableInput()).add(new WalkTo(player, fountain)).add(new NarrationSequence("The Fountain Explodes into a brilliant light ~You recieve 100 BILLION COINS~")).add(new Pickup(player, coin));
+	}
+	
+	@BuilderMethod
+	public void DungeonNar() {
+		var node = get(MyNodeLabels.Youdied.toString());
+		node.add(new HideDialog()).add(new FadeOut()).add(new SetPosition(player,dungeon)).add(new NarrationSequence(
+				"You awaken in a cage in the middle of a damp, dark room. You can barely make out the faces of one other prisoner in the dim light of the candlestick on the warden’s desk. You decide its best to use your magic time travel powers to go back to right when you lost your farm"))
+		.add(new FadeIn());
+	}
+
 	@BuilderMethod
 	public void DockActions() {
 		var node = get(MyNodeLabels.Dock.toString());
@@ -326,7 +355,11 @@ public class MyNodeBuilder extends NodeBuilder {
 				"You are greeted by the smell of sea mist and rum as you enter the dock at the edge of town. You see an intimidating swashbuckler sitting by his ship, as well as local city goers fishing off of the dock. 'Argh! Are ye a pirate?' Asks a captain from atop his pirate ship."))
 		.add(new SetPosition(player, port));
 	}
-	
+
+		
+		
+		
+		
 	
 
 	}

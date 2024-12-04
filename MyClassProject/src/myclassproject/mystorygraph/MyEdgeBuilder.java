@@ -175,9 +175,13 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void Kill() {
 		var node = get(MyNodeLabels.Kill1.toString());
 		node.clearEdges();
-		var choice1 = new DialogChoice("Continue");
+		var choice1 = new DialogChoice("Win");
 		var nextNode1 = get(MyNodeLabels.Town1.toString());
 		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Lose");
+		var nextNode2 = get(MyNodeLabels.Youdied.toString());
+		node.add(new Edge(choice2, nextNode2));
 	}
 
 	
@@ -266,7 +270,9 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode7 = get(MyNodeLabels.Kill2.toString());
 		node.add(new Edge(choice7, nextNode7));
 		
-		
+		var choice9 = new PlayerInteraction(MyChoiceLabels.Wish.toString(), MyStoryEntities.fountain, Icons.star, "Wish to the well ~Reqiures Cursed Book~");
+		var nextNode9 = get(MyNodeLabels.Wish.toString());
+		node.add(new Edge(choice9, nextNode9));
 		
 	}
 	
@@ -374,9 +380,13 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void Kill2() {
 		var node = get(MyNodeLabels.Kill2.toString());
 		node.clearEdges();
-		var choice1 = new DialogChoice("Continue");
+		var choice1 = new DialogChoice("Win");
 		var nextNode1 = get(MyNodeLabels.CityAct.toString());
 		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Lose");
+		var nextNode2 = get(MyNodeLabels.Youdied.toString());
+		node.add(new Edge(choice2, nextNode2));
 	}
 	
 	@BuilderMethod
@@ -392,8 +402,57 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var choice1 = new PlayerInteraction(MyChoiceLabels.Relocated9.toString(), MyStoryEntities.WhichreturnDoor, Icons.door, "Go to City");
 		var nextNode1 = get(MyNodeLabels.CityNar.toString());
 		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new PlayerInteraction(MyChoiceLabels.WhichTalk1.toString(), MyStoryEntities.alchemist, Icons.darkmagic, "Speak to Alchemist");
+		var nextNode2 = get(MyNodeLabels.WhichTalk.toString());
+		node.add(new Edge(choice2, nextNode2));
 	}
 	
+	@BuilderMethod
+	public void WhichTalk() { 
+		var node = get(MyNodeLabels.WhichTalk.toString());
+		var choice1 = new DialogChoice("Yes");
+		var nextNode1 = get(MyNodeLabels.WhichTalkYes.toString());
+		node.add(new Edge(choice1, nextNode1));
+		var choice2 = new DialogChoice("No");
+		var nextNode2 = get(MyNodeLabels.WhichTalkNo.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	
+	
+	@BuilderMethod
+	public void WhichTalkYes() { 
+		var node = get(MyNodeLabels.WhichTalkYes.toString());
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.AlchemistAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void WhichTalkNo() { 
+		var node = get(MyNodeLabels.WhichTalkNo.toString());
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.AlchemistAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+
+	
+	@BuilderMethod
+	public void DungeonActions() {
+		var node = get(MyNodeLabels.Youdied.toString());
+		var choice1 = new CloseNarrationChoice();
+		var nextNode1 = get(MyNodeLabels.FarmNar.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+	}	
+	
+	@BuilderMethod
+	public void Wished() {
+		var node = get(MyNodeLabels.Wish.toString());
+		var choice1 = new CloseNarrationChoice();
+		var nextNode1 = get(MyNodeLabels.CityAct.toString());
+		node.add(new Edge(choice1, nextNode1));
+		
+	}
 	
 	
 	

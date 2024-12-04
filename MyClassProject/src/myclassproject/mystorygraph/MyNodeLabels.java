@@ -41,6 +41,11 @@ public enum MyNodeLabels{
 	Kill2,
 	AlchemistNar,
 	AlchemistAct,
+	Youdied,
+	WhichTalk,
+	WhichTalkYes,
+	WhichTalkNo,
+	Wish,
 	
 	Twinkie,//All Choices Made
 	Apple,//All Choices Made

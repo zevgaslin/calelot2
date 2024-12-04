@@ -64,6 +64,10 @@ public final class MyStoryEntities {
 	public static final Furniture townExit = new Furniture(town, FurnitureTypes.Exit);
 	public static final Furniture SouthEnd = new Furniture(bradge, FurnitureTypes.SouthEnd);
 	public static final Furniture NorthEnd = new Furniture(bradge, FurnitureTypes.NorthEnd);
+	public static final Furniture EastEnd = new Furniture(bradge, FurnitureTypes.EastEnd);
+	
+	
+	public static final Furniture fountain = new Furniture(city, FurnitureTypes.Fountain);
 	public static final Furniture Dockdoor = new Furniture(city, FurnitureTypes.EastEnd);
 	public static final Furniture Blackdoor = new Furniture(city, FurnitureTypes.BrownHouseDoor);
 	public static final Furniture Blackreturndoor = new Furniture(blackSmith, FurnitureTypes.Door);
