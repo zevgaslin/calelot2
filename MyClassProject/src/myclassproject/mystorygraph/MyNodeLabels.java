@@ -50,6 +50,18 @@ public enum MyNodeLabels{
 	GuardTalk3,
 	GuardBribe3,
 	GuardFight3,
+	TalkBird,
+	TalkPirateAboutBird,
+	PirateEnd2,
+	DockNar,
+	DockTalk,
+	PirateFight1,
+	PirateFight2,
+	PirateForest,
+	PirateTree,
+	FindBird,
+	PirateGoodEnding,
+
 	
 	
 	Twinkie,//All Choices Made

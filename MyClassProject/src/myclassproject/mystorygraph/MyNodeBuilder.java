@@ -15,6 +15,7 @@ import com.storygraph.*;
 
 import java.util.List;
 import com.actions.*;
+import com.actions.utility.ShowCredits;
 import com.sequences.*;
 //import myclassproject.questexample.NodeLabels;
 
@@ -36,7 +37,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var root = get(MyNodeLabels.root.toString());
 		root.clearSequence();
 		root.add(new CreateAll(List.of(farm, town, city, blackSmith, castleCrossroads, port, ruins, greatHall,
-				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, magnifyingGlass, apple, bread, grapes))
+				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, apple, bread, grapes, magnifyingGlass, bird, parrot))
 				.add(new CreateCharacterSequence(player)).add(new CreateCharacterSequence(bandit))
 				.add(new CreateCharacterSequence(npc1)).add(new CreateCharacterSequence(npc2))
 				.add(new CreateCharacterSequence(blacksmith)).add(new CreateCharacterSequence(alchemist))
@@ -354,15 +355,104 @@ public class MyNodeBuilder extends NodeBuilder {
 	
 	}
 	
+	@BuilderMethod
+	public void DockNar() {
+		var node = get(MyNodeLabels.DockNar.toString());
+		//node.add(new SetPosition(npc1, port, "BigStall"));
+		node.add(new HideDialog()).add(new FadeOut()).add(new SetPosition(player, port)).add(new SetPosition(pirate, Bigship)).add(new FadeIn()).add(new NarrationSequence("You are greeted by the smell of sea mist and rum as you enter the dock at the edge of town. \nYou see an intimidating swashbuckler sitting by his ship, as well as local city goers fishing off of the dock. \n"));
+	}
+	@BuilderMethod
+	public void DockAct() {
+		var node = get(MyNodeLabels.Dock.toString());
+		node.add(new HideNarration()).add(new HideDialog()).add(new EnableInput());
+	}
+	@BuilderMethod
+	public void DockDialouge() {
+		var node = get(MyNodeLabels.DockTalk.toString());
+		node.add(new HideDialog()).add(new DialogSequence(player, pirate, List.of("Argh! Are ye a pirate?"), List.of("Yar!","Nar...")));
+	}
+	@BuilderMethod
+	public void PirateFightTalk() {
+		var node = get(MyNodeLabels.PirateFight1.toString());
+		node.add(new SetPosition(pirate, port, "BigShip"));
+		node.add(new DialogSequence(player, pirate,List.of("I don't believe ye landlubber! Face me in combat to prove your pirate prowess!"),List.of("You're on!")));
+		
+	}
+	@BuilderMethod
+	public void PirateFightAct() {
+		var node = get(MyNodeLabels.PirateFight2.toString());
+		node.add(new HideDialog()).add(new Face(pirate, player)).add(new Draw(pirate, sword)).add(new Draw(player, sword)).add(new Attack(player, pirate, true)).add(new Die(pirate));
+		node.add(new NarrationSequence("Congrats you have bested the pirate captain in fair combat! Arg! Ye are a true pirate'"+"You sail away from your past life, with nothing but the open ocean and your new mateys surrounding you. You may not have gotten your farm back, but you’ve found a new purpose exploring and pillaging the seven seas."));
+	}
 	
 	@BuilderMethod
-	public void DockActions() {
-		var node = get(MyNodeLabels.Dock.toString());
-		//node.add(new SetPosition(npc1, port, "BigStall"));
-		node.add(new NarrationSequence(
-				"You are greeted by the smell of sea mist and rum as you enter the dock at the edge of town. You see an intimidating swashbuckler sitting by his ship, as well as local city goers fishing off of the dock. 'Argh! Are ye a pirate?' Asks a captain from atop his pirate ship."))
-		.add(new SetPosition(player, port));
+	public void PirateWin() {
+		var node = get(MyNodeLabels.PirateEnding.toString());
+		node.add(new HideNarration());
+		node.add(new ShowCredits());
 	}
+	
+	
+	@BuilderMethod
+	public void NoActions() {
+		var node = get(MyNodeLabels.No.toString());
+		node.add(new DialogSequence(player, pirate, List.of("Do ye want to be? I could always use some more crew."), List.of("Yes","No")));
+	}
+	
+	@BuilderMethod
+	public void TooBadActions() {
+		var node = get(MyNodeLabels.TooBad.toString());
+		node.add(new DialogSequence(player, pirate, List.of("Then get off me dock land lubber! >:("), List.of("Continue")));
+	}
+	
+	@BuilderMethod
+	public void ArgActions() {
+		var node = get(MyNodeLabels.Arg.toString());
+		node.add(new DialogSequence(player, pirate, List.of("If ye wants to be a pirate first you must go find my lost parrot" + "I think he's somewhere in the forest you should go look for him there"+ "Here this spy glass will help you find him"), List.of("Go to forest")));
+	}
+	@BuilderMethod
+	public void PirateForest() {
+		var node = get(MyNodeLabels.PirateForest.toString());
+		node.add(new HideDialog()).add(new Face(pirate, player)).add(new Draw(pirate, magnifyingGlass)).add(new Give(pirate,magnifyingGlass,player)).add(new FadeOut()).add(new SetPosition(player,forestPath)).add(new FadeIn()).add(new NarrationSequence("You head into the forest to look for the lost parrot"+"You hear a strange voice coming from that tree in front of you"));	
+	}
+	@BuilderMethod
+	public void PirateTree() {
+		var node = get(MyNodeLabels.PirateTree.toString());
+		node.add(new HideNarration()).add(new SetPosition(player, forestPath)).add(new EnableInput()).add(new EnableInput());
+	}
+	@BuilderMethod
+	public void FindDaBirb() {
+		var node = get(MyNodeLabels.FindBird.toString());
+		node.add(new SetPosition(parrot, pirateTree));
+	}
+	@BuilderMethod
+	public void TalkToBirb() {
+		var node = get(MyNodeLabels.TalkBird.toString());
+		node.add(new Face(parrot,player));
+		node.add(new DialogSequence(player, parrot, List.of("Hi my name is Parrot. Can you bring me back to the pirate please"), List.of("Yes","No")));
+	}
+	@BuilderMethod
+	public void PirateGoodEnd() {
+		var node = get(MyNodeLabels.PirateGoodEnding.toString());
+		node.add(new HideDialog()).add(new FadeOut()).add(new SetPosition(player, Bigship));
+		node.add(new SetPosition(pirate, Bigship));
+		node.add(new SetPosition(parrot, Bigship));
+		node.add(new FadeIn());
+		}
+	@BuilderMethod
+	public void PirateGoodEndTalk() {
+		var node = get(MyNodeLabels.TalkPirateAboutBird.toString());
+		node.add(new Face(pirate,player));
+		node.add(new DialogSequence(player, pirate, List.of("You found my parrot! Thank you!"), List.of("Join Pirates")));
+	}
+	@BuilderMethod
+	public void PirateGoodEndTalkFin() {
+		var node = get(MyNodeLabels.PirateEnd2.toString());
+		node.add(new NarrationSequence("You sail off into the sunset. The end"));
+	}
+	
+
+
 	
 
 	

@@ -31,6 +31,12 @@ public enum MyChoiceLabels {
 	WhichTalk2,
 	WhichTalk3,
 	Wish,
+	Talk7,
+	Relocate25,
+	TakeBird,
+	TalkToBird,
+	TalkToPirate,
+
 	
 	
 	Wall, 

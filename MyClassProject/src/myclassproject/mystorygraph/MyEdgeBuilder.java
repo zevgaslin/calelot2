@@ -239,7 +239,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	public void CityActed() {
 		var node = get(MyNodeLabels.CityAct.toString());
 		var choice1 =  new PlayerInteraction(MyStoryEntities.player, MyChoiceLabels.Relocated4.toString(), MyStoryEntities.Dockdoor);
-		var nextNode1 = get(MyNodeLabels.Dock.toString());
+		var nextNode1 = get(MyNodeLabels.DockNar.toString());
 		node.add(new Edge(choice1, nextNode1));
 		
 		var choice5 = new PlayerInteraction(MyChoiceLabels.Relocated5.toString(), MyStoryEntities.Blackdoor, Icons.door, "Go to Blacksmith");
@@ -468,7 +468,122 @@ public class MyEdgeBuilder extends NodeBuilder {
 	}
 	
 	
+	@BuilderMethod
+	public void DockNarEdges() {
+		var node = get(MyNodeLabels.DockNar.toString());
+		var choice = new CloseNarrationChoice();
+		var nextNode = get(MyNodeLabels.Dock.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	@BuilderMethod
+	public void DockActEdge() {
+		var node = get(MyNodeLabels.Dock.toString());
+		var choice1 = new PlayerInteraction(MyChoiceLabels.Talk7.toString(), MyStoryEntities.pirate, Icons.talk, "Talk to pirate");
+		var nextNode1 = get(MyNodeLabels.DockTalk.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void DockTalk() {
+		var node = get(MyNodeLabels.DockTalk.toString());
+		var choice1 = new DialogChoice("Yar!");
+		var nextNode1 = get(MyNodeLabels.PirateFight1.toString());
+		node.add(new Edge(choice1, nextNode1));
+		var choice2 = new DialogChoice("Nar...");
+		var nextNode2 = get(MyNodeLabels.No.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void PirateFightTalk() {
+		var node = get(MyNodeLabels.PirateFight1.toString());
+		var choice1 = new DialogChoice("You're on!");
+		var nextNode1 = get(MyNodeLabels.PirateFight2.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void PirateEnd() {
+		var node = get(MyNodeLabels.PirateFight2.toString());
+		var choice1 = new CloseNarrationChoice();
+		var nextNode1 = get(MyNodeLabels.PirateEnding.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
 	
+	@BuilderMethod
+	public void PirateTalk() {
+		var node = get(MyNodeLabels.No.toString());
+		var choice1 = new DialogChoice("Yes");
+		var nextNode1 = get(MyNodeLabels.Arg.toString());
+		node.add(new Edge(choice1, nextNode1));
+		var choice2 = new DialogChoice("No");
+		var nextNode2 = get(MyNodeLabels.TooBad.toString());
+		node.add(new Edge(choice2, nextNode2));
+	}
+	@BuilderMethod
+	public void PirateNo() {
+		var node = get(MyNodeLabels.TooBad.toString());
+		var choice1 = new DialogChoice("Continue");
+		var nextNode1 = get(MyNodeLabels.Dock.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}	
+	@BuilderMethod
+	public void PirateYes() {
+		var node = get(MyNodeLabels.Arg.toString());
+		var choice1 = new DialogChoice("Go to forest");
+		var nextNode1 = get(MyNodeLabels.PirateForest.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void PirateForest() {
+		var node = get(MyNodeLabels.PirateForest.toString());
+		var choice = new CloseNarrationChoice();
+		var nextNode = get(MyNodeLabels.PirateTree.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	@BuilderMethod
+	public void FindTree() {
+		var node = get(MyNodeLabels.PirateTree.toString());
+		var choice = new PlayerInteraction(MyStoryEntities.player, MyChoiceLabels.Relocate25.toString(), MyStoryEntities.pirateTree);
+		var nextNode = get(MyNodeLabels.FindBird.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	@BuilderMethod
+	public void GetBird(){
+		var node = get(MyNodeLabels.FindBird.toString());
+		var choice = new PlayerInteraction(MyChoiceLabels.TalkToBird.toString(), MyStoryEntities.parrot, Icons.talk, "Talk to Bird");
+		var nextNode = get(MyNodeLabels.TalkBird.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	@BuilderMethod
+	public void TalkTuaBird(){
+		var node = get(MyNodeLabels.TalkBird.toString());
+		var choice = new DialogChoice("Yes");
+		var nextNode = get(MyNodeLabels.PirateGoodEnding.toString());
+		node.add(new Edge(choice, nextNode));
+		var choice1 = new DialogChoice("No");
+		var nextNode1 = get(MyNodeLabels.FindBird.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+	@BuilderMethod
+	public void GiveBird(){
+		var node = get(MyNodeLabels.PirateGoodEnding.toString());
+		var choice = new PlayerInteraction(MyChoiceLabels.TalkToPirate.toString(), MyStoryEntities.pirate, Icons.talk, "Give Bird to Pirate");
+		var nextNode = get(MyNodeLabels.TalkPirateAboutBird.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	@BuilderMethod
+	public void GiveBird2(){
+		var node = get(MyNodeLabels.TalkPirateAboutBird.toString());
+		var choice = new DialogChoice("Join Pirates");
+		var nextNode = get(MyNodeLabels.PirateEnd2.toString());
+		node.add(new Edge(choice, nextNode));
+	}
+	@BuilderMethod
+	public void PirateEnd2() {
+		var node = get(MyNodeLabels.PirateEnd2.toString());
+		var choice1 = new CloseNarrationChoice();
+		var nextNode1 = get(MyNodeLabels.PirateEnding.toString());
+		node.add(new Edge(choice1, nextNode1));
+	}
+
 
 
 	
