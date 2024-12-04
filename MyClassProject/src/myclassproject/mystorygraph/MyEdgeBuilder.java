@@ -631,13 +631,13 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void TalkTuaKing(){
 		var node = get(MyNodeLabels.TalkingToKing.toString());
-		var choice = new DialogChoice("Im here to fight you! This is revenge for rasing my taxes ~500 Health~");
+		var choice = new DialogChoice("I am here to fight you tyrant! This is revenge for rasing my taxes ~500 Health~");
 		var nextNode = get(MyNodeLabels.KingFight.toString());
 		node.add(new Edge(choice, nextNode));
-		var choice1 = new DialogChoice("Hold on there I just want to buy my land back.~10000 Coins~");
+		var choice1 = new DialogChoice("Hold on there. I just want to buy my land back. ~10000 Coins~");
 		var nextNode1 = get(MyNodeLabels.BuyTalk.toString());
 		node.add(new Edge(choice1, nextNode1));
-		var choice2 = new DialogChoice("Im here to buy your whole kingdom ~1000000 Coins~");
+		var choice2 = new DialogChoice("I am here to buy your whole kingdom! ~1000000 Coins~");
 		var nextNode2 = get(MyNodeLabels.BuyAllTalk.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
