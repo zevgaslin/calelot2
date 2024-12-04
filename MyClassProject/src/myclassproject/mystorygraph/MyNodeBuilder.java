@@ -57,7 +57,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void FarmNarration() {
 		var node = get(MyNodeLabels.FarmNar.toString());
 		node.add(new FadeOut()).add(new SetPosition(player, farm)).add(new HideMenu()).add(new HideNarration()).add(new FadeIn())
-		.add(new NarrationSequence("The evil king Gorlock hath raised taxes upon thy farm, and you could not afford the new fees. As such, Gorlock sent his goons to roughen you up and repossess your family farm! You awaken in the small, poor town of Gregoria, on the outer edge of the forest. The town is filled with dilapidated buildings and broken people. You know what to do next. \n"));
+		.add(new NarrationSequence("The evil king Bartholomew hath raised taxes upon thy farm, and you could not afford the new fees. As such, Bartholomew sent his goons to repossess your family farm! You awaken at the front of your empty farm, your family gone after you could no longer provide for them. If you want to get your family and your life back, you must get to the king and take back everything that was taken from you. You have 10 health and 0 coins. When you see this sign: "~", an action is mandatory. You know what to do next. \n"));
 			}
 	@BuilderMethod
 	public void FarmActions() {
@@ -88,13 +88,13 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void AppleTalkYes() {
 		var node= get(MyNodeLabels.AppleTalkYes.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, apple, npc1));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderful"),List.of ("Continue"))).add(new Take(player, apple, npc1));
 	}
 	@BuilderMethod
 	public void AppleTalkNo() {
 		var node= get(MyNodeLabels.AppleTalkNo.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Then scram"),List.of ("Continue")));
 	}
 
 	
@@ -102,7 +102,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void BreadTalk() {
 		var node= get(MyNodeLabels.BreadTalk.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Would you like to purchase this bread for 5 coins"),List.of ("Yes","No")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Would you like to purchase this fresh bread for 5 coins"),List.of ("Yes","No")));
 	}
 	
 	
@@ -110,33 +110,33 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void BreadTalkYes() {
 		var node= get(MyNodeLabels.BreadTalkYes.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, bread, npc1));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderful"),List.of ("Continue"))).add(new Take(player, bread, npc1));
 	}
 	@BuilderMethod
 	public void BreadTalkNo() {
 		var node= get(MyNodeLabels.BreadTalkNo.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Then scram!"),List.of ("Continue")));
 	}
 	
 	@BuilderMethod
 	public void GrapesTalk() {
 		var node= get(MyNodeLabels.GrapesTalk.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Would you like to purchase this Grapes for 10 coins"),List.of ("Yes","No")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Would you like to purchase these scrumptious grapes for 10 coins"),List.of ("Yes","No")));
 	}
 	
 	@BuilderMethod
 	public void GrapesTalkYes() {
 		var node= get(MyNodeLabels.GrapesTalkYes.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, grapes, npc1));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderful"),List.of ("Continue"))).add(new Take(player, grapes, npc1));
 	}
 	@BuilderMethod
 	public void GrapesTalkNo() {
 		var node= get(MyNodeLabels.GrapesTalkNo.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Then scram!"),List.of ("Continue")));
 	}
 	
 	//NPC 2
@@ -145,13 +145,13 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void PickPocket() {
 		var node= get(MyNodeLabels.PickPocket1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("What a Lovely Day (You steal 20 coins)"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("What a Lovely Day! (Pickpocket 20 coins)"),List.of ("Continue")));
 	} 
 	@BuilderMethod
 	public void Kill() {
 		var node= get(MyNodeLabels.Kill1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new DialogSequence(player, npc2, List.of("A scuffule ensues ~10 Health Required to Win & Escape~","Reward: 20 Coins"),List.of ("Win","Lose"))).add(new Attack(player,npc2,true));
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new DialogSequence(player, npc2, List.of("A scuffle ensues ~10 Health Required to Win & Escape~","Reward: 20 Coins"),List.of ("Win","Lose"))).add(new Attack(player,npc2,true));
 	}
 
 	
@@ -180,7 +180,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void guardTalkNo() {
 		var node= get(MyNodeLabels.GuardTalkNo.toString());		
-		node.add(new HideDialog()).add(new DialogSequence(player, gaurd, List.of("Then no passing"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, gaurd, List.of("Then scram!"),List.of ("Continue")));
 	}
 	
 	
@@ -191,7 +191,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var node = get(MyNodeLabels.CityNar.toString());
 		node.add(new HideDialog()).add(new DisableInput()).add(new FadeOut()).add(new SetPosition(npc1 , Plant)).add(new SetPosition(npc2, city, "Alley")).add(new SetPosition(player, city)).add(new FadeIn())
 		.add(new NarrationSequence(
-				"As you pass through the pearly gates of the city, you are taken aback by the hustle and bustle of the beautiful Camelot City. You are excited by the prospect of exploring every corner of the mysterious new location, but you know you must focus on your ultimate goal; getting your land back.\n"));
+				"As you pass through the pearly gates, you are taken aback by the hustle and bustle of the beautiful Camelot City. You are excited by the prospect of exploring every corner of the mysterious new location, but you know you must focus on your ultimate goal; getting your land back.\n"));
 	}
 	@BuilderMethod
 	public void CityAct() {
@@ -204,20 +204,20 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void AppleTalk1() {
 		var node= get(MyNodeLabels.AppleTalk1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Oh hi nice to see you again. Would you like to purchase this apple for 1 coin"),List.of ("Yes","No")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Oh, hi! nice to see you again. Would you like to purchase this delicious apple for 1 coin"),List.of ("Yes","No")));
 	}
 	
 	@BuilderMethod
 	public void AppleTalkYes1() {
 		var node= get(MyNodeLabels.AppleTalkYes1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, apple, npc1));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderful"),List.of ("Continue"))).add(new Take(player, apple, npc1));
 	}
 	@BuilderMethod
 	public void AppleTalkNo1() {
 		var node= get(MyNodeLabels.AppleTalkNo1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Then scram!"),List.of ("Continue")));
 	}
 
 	
@@ -225,7 +225,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void BreadTalk1() {
 		var node= get(MyNodeLabels.BreadTalk1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Oh hi nice to see you again. Would you like to purchase this bread for 5 coins"),List.of ("Yes","No")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Oh, hi! Nice to see you again. Would you like to purchase this crispy bread for 5 coins"),List.of ("Yes","No")));
 	}
 	
 	
@@ -233,33 +233,33 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void BreadTalkYes1() {
 		var node= get(MyNodeLabels.BreadTalkYes1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, bread, npc1));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderful"),List.of ("Continue"))).add(new Take(player, bread, npc1));
 	}
 	@BuilderMethod
 	public void BreadTalkNo1() {
 		var node= get(MyNodeLabels.BreadTalkNo1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Then scram!"),List.of ("Continue")));
 	}
 	
 	@BuilderMethod
 	public void GrapesTalk1() {
 		var node= get(MyNodeLabels.GrapesTalk1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Oh hi nice to see you again. Would you like to purchase this Grapes for 10 coins"),List.of ("Yes","No")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Oh, hi! Nice to see you again. Would you like to purchase these juicy grapes for 10 coins"),List.of ("Yes","No")));
 	}
 	
 	@BuilderMethod
 	public void GrapesTalkYes1() {
 		var node= get(MyNodeLabels.GrapesTalkYes1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderfull"),List.of ("Continue"))).add(new Take(player, grapes, npc1));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("Wonderful"),List.of ("Continue"))).add(new Take(player, grapes, npc1));
 	}
 	@BuilderMethod
 	public void GrapesTalkNo1() {
 		var node= get(MyNodeLabels.GrapesTalkNo1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you. You are the bane of my existence. You can't afford grapes? Seriously? I just saw you rob that guy for like 20 coins, and you can't give me 10 for some grapes? Are you kidding me? You disgust me, get out of my sight."),List.of ("Continue")));
 	}
 	
 	@BuilderMethod
@@ -287,7 +287,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void PickPocket2() {
 		var node= get(MyNodeLabels.PickPocket2.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("Oh, you again. What a Lovely Day (You steal 20 coins)"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("Oh, you again. What a Lovely Day! (You steal 20 coins)"),List.of ("Continue")));
 	} 
 	@BuilderMethod
 	public void Kill2() {
@@ -319,7 +319,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void WhichTalk() {
 		var node = get(MyNodeLabels.WhichTalk.toString());
-		node.add(new HideDialog()).add(new WalkTo(player,alchemist)).add(new DialogSequence(player, alchemist, List.of("Would you like a cursed book ~Warning may be cursed~"),List.of ("Yes","No")));
+		node.add(new HideDialog()).add(new WalkTo(player,alchemist)).add(new DialogSequence(player, alchemist, List.of("Would you like a cursed book? ~Warning, may be cursed~"),List.of ("Yes","No")));
 	}
 	@BuilderMethod
 	public void WhichTalkYes() {
@@ -336,7 +336,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void Wish() {
 		var node = get(MyNodeLabels.Wish.toString());
-		node.add(new HideDialog()).add(new DisableInput()).add(new WalkTo(player, fountain)).add(new NarrationSequence("The Fountain Explodes into a brilliant light ~You recieve 100 BILLION COINS~")).add(new Pickup(player, coin));
+		node.add(new HideDialog()).add(new DisableInput()).add(new WalkTo(player, fountain)).add(new NarrationSequence("The Fountain explodes into a brilliant light ~You recieve 100 BILLION COINS~")).add(new Pickup(player, coin));
 	}
 	
 	@BuilderMethod
