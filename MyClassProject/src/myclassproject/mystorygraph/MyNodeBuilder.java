@@ -1,5 +1,5 @@
 package myclassproject.mystorygraph;
-
+//test
 import java.util.List;
 //import myclassproject.mystorygraph.MyNodeLabels;
 //import myclassproject.mystorygraph.FadeOut;
@@ -36,7 +36,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		var root = get(MyNodeLabels.root.toString());
 		root.clearSequence();
 		root.add(new CreateAll(List.of(farm, town, city, blackSmith, castleCrossroads, port, ruins, greatHall,
-				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, magnifyingGlass, apple, bread))
+				forestPath, dungeon, alchemyShop, hallway, storage, sword, coin, evilBook, magnifyingGlass, apple, bread, grapes))
 				.add(new CreateCharacterSequence(player)).add(new CreateCharacterSequence(bandit))
 				.add(new CreateCharacterSequence(npc1)).add(new CreateCharacterSequence(npc2))
 				.add(new CreateCharacterSequence(blacksmith)).add(new CreateCharacterSequence(alchemist))
