@@ -274,6 +274,10 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode9 = get(MyNodeLabels.Wish.toString());
 		node.add(new Edge(choice9, nextNode9));
 		
+		var choice10 =  new PlayerInteraction(MyStoryEntities.player, MyChoiceLabels.Relocated12.toString(), MyStoryEntities.cityexit);
+		var nextNode10 = get(MyNodeLabels.Dock.toString());
+		node.add(new Edge(choice10, nextNode10));;
+		
 	}
 	
 	@BuilderMethod

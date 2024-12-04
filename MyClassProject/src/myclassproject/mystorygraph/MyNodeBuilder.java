@@ -57,7 +57,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void FarmNarration() {
 		var node = get(MyNodeLabels.FarmNar.toString());
 		node.add(new FadeOut()).add(new SetPosition(player, farm)).add(new HideMenu()).add(new HideNarration()).add(new FadeIn())
-		.add(new NarrationSequence("The evil king Bartholomew hath raised taxes upon thy farm, and you could not afford the new fees. As such, Bartholomew sent his goons to repossess your family farm! You awaken at the front of your empty farm, your family gone after you could no longer provide for them. If you want to get your family and your life back, you must get to the king and take back everything that was taken from you. You have 10 health and 0 coins. When you see this sign: "~", an action is mandatory. You know what to do next. \n"));
+		.add(new NarrationSequence("The evil king Bartholomew hath raised taxes upon thy farm, and you could not afford the new fees. As such, Bartholomew sent his goons to repossess your family farm! You awaken at the front of your empty farm, your family gone after you could no longer provide for them. If you want to get your family and your life back, you must get to the king and take back everything that was taken from you. You have 10 health and 0 coins. When you see this sign: '~', an action is mandatory. You know what to do next. \n"));
 			}
 	@BuilderMethod
 	public void FarmActions() {
