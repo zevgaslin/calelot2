@@ -631,7 +631,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void TalkTuaKing(){
 		var node = get(MyNodeLabels.TalkingToKing.toString());
-		var choice = new DialogChoice("I am here to fight you tyrant! This is revenge for raising my taxes ~500 Health~");
+		var choice = new DialogChoice("I am here to fight you tyrant! This is revenge for rasing my taxes ~500 Health~");
 		var nextNode = get(MyNodeLabels.KingFight.toString());
 		node.add(new Edge(choice, nextNode));
 		var choice1 = new DialogChoice("Hold on there. I just want to buy my land back. ~10000 Coins~");
@@ -641,6 +641,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var nextNode2 = get(MyNodeLabels.BuyAllTalk.toString());
 		node.add(new Edge(choice2, nextNode2));
 	}
+	//test
 	@BuilderMethod
 	public void BuyLandTalk(){
 		var node = get(MyNodeLabels.BuyTalk.toString());
