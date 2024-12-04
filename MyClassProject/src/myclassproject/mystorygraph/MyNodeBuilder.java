@@ -375,7 +375,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void PirateFightTalk() {
 		var node = get(MyNodeLabels.PirateFight1.toString());
 		node.add(new SetPosition(pirate, port, "BigShip"));
-		node.add(new DialogSequence(player, pirate,List.of("I don't believe ye landlubber! Face me in combat to prove your pirate prowess!"),List.of("You're on!")));
+		node.add(new DialogSequence(player, pirate,List.of("I do not believe ye landlubber! Face me in combat to prove your pirate prowess!"),List.of("Win","Lose")));
 		
 	}
 	@BuilderMethod

@@ -495,9 +495,13 @@ public class MyEdgeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void PirateFightTalk() {
 		var node = get(MyNodeLabels.PirateFight1.toString());
-		var choice1 = new DialogChoice("You're on!");
+		var choice1 = new DialogChoice("Win");
 		var nextNode1 = get(MyNodeLabels.PirateFight2.toString());
 		node.add(new Edge(choice1, nextNode1));
+		
+		var choice2 = new DialogChoice("Lose");
+		var nextNode2 = get(MyNodeLabels.Youdied.toString());
+		node.add(new Edge(choice2, nextNode2));
 	}
 	@BuilderMethod
 	public void PirateEnd() {
