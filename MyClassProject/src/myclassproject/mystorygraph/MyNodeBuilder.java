@@ -346,7 +346,15 @@ public class MyNodeBuilder extends NodeBuilder {
 				"You awaken in a cage in the middle of a damp, dark room. You can barely make out the faces of one other prisoner in the dim light of the candlestick on the warden’s desk. You decide its best to use your magic time travel powers to go back to right when you lost your farm"))
 		.add(new FadeIn());
 	}
-
+	@BuilderMethod
+	public void Crossroads() {
+		var node = get(MyNodeLabels.Crossroads.toString());
+		node.add(new HideDialog()).add(new FadeOut()).add(new SetPosition(player,castleCrossroads))
+		.add(new FadeIn());
+	
+	}
+	
+	
 	@BuilderMethod
 	public void DockActions() {
 		var node = get(MyNodeLabels.Dock.toString());
@@ -355,6 +363,7 @@ public class MyNodeBuilder extends NodeBuilder {
 				"You are greeted by the smell of sea mist and rum as you enter the dock at the edge of town. You see an intimidating swashbuckler sitting by his ship, as well as local city goers fishing off of the dock. 'Argh! Are ye a pirate?' Asks a captain from atop his pirate ship."))
 		.add(new SetPosition(player, port));
 	}
+	
 
 	
 		

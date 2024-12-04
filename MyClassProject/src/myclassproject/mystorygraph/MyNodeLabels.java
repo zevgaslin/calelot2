@@ -46,6 +46,11 @@ public enum MyNodeLabels{
 	WhichTalkYes,
 	WhichTalkNo,
 	Wish,
+	Crossroads,
+	GuardTalk3,
+	GuardBribe3,
+	GuardFight3,
+	
 	
 	Twinkie,//All Choices Made
 	Apple,//All Choices Made

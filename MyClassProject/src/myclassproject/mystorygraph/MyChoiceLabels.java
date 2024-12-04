@@ -31,6 +31,8 @@ public enum MyChoiceLabels {
 	WhichTalk2,
 	WhichTalk3,
 	Wish,
+	
+	
 	Wall, 
 	goToTown, 
 	TownGeneralStore, 

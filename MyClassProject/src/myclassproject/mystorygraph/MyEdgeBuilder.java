@@ -275,7 +275,7 @@ public class MyEdgeBuilder extends NodeBuilder {
 		node.add(new Edge(choice9, nextNode9));
 		
 		var choice10 =  new PlayerInteraction(MyStoryEntities.player, MyChoiceLabels.Relocated12.toString(), MyStoryEntities.cityexit);
-		var nextNode10 = get(MyNodeLabels.Dock.toString());
+		var nextNode10 = get(MyNodeLabels.Crossroads.toString());
 		node.add(new Edge(choice10, nextNode10));;
 		
 	}
@@ -455,7 +455,16 @@ public class MyEdgeBuilder extends NodeBuilder {
 		var choice1 = new CloseNarrationChoice();
 		var nextNode1 = get(MyNodeLabels.CityAct.toString());
 		node.add(new Edge(choice1, nextNode1));
-		
+
+	}
+	
+	@BuilderMethod
+	public void CrossedRoads() {
+		var node = get(MyNodeLabels.Crossroads.toString());
+		var choice1 = new PlayerInteraction(MyChoiceLabels.Talk.toString(), MyStoryEntities.gaurd, Icons.talk, "Talk to Guard");
+		var nextNode1 = get(MyNodeLabels.GuardTalk3.toString());
+		node.add(new Edge(choice1, nextNode1));
+
 	}
 	
 	
