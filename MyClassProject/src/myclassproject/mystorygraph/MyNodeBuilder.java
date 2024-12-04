@@ -147,7 +147,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void PickPocket() {
 		var node= get(MyNodeLabels.PickPocket1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("What a Lovely Day! (Pickpocket 20 coins)"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("Good afternoon sir. It is such a lovely day! I sure hope nobody pickpockets me. ~You pickpocket 20 coins~"),List.of ("Continue")));
 	} 
 	@BuilderMethod
 	public void Kill() {
@@ -261,7 +261,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void GrapesTalkNo1() {
 		var node= get(MyNodeLabels.GrapesTalkNo1.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you. You are the bane of my existence. You can't afford grapes? Seriously? I just saw you rob that guy for like 20 coins, and you can't give me 10 for some grapes? Are you kidding me? You disgust me. Get out of my sight."),List.of ("Continue")));
+		node.add(new HideDialog()).add(new DialogSequence(player, npc1, List.of("I hate you. You are the bane of my existence. You can't afford grapes? Seriously? I just saw you rob that guy for like 20 coins. You can't give me 10 for some grapes? Are you kidding me? You disgust me. Get out of my sight."),List.of ("Continue")));
 	}
 	
 	@BuilderMethod
@@ -289,7 +289,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	public void PickPocket2() {
 		var node= get(MyNodeLabels.PickPocket2.toString());		
 		node.clearSequence();
-		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("Oh you again. What a Lovely Day! (You steal 20 coins)"),List.of ("Continue")));
+		node.add(new HideDialog()).add(new WalkTo(player,npc2)).add(new Take(player, coin, npc2)).add(new DialogSequence(player, npc2, List.of("Oh you again. It is such a lovely day! I sure hope nobody pickpockets me. ~You steal 20 coins~"),List.of ("Continue")));
 	} 
 	@BuilderMethod
 	public void Kill2() {
@@ -309,7 +309,7 @@ public class MyNodeBuilder extends NodeBuilder {
 		.add(new Face(alchemist, player))
 		.add(new Face(player, alchemist))
 		.add(new NarrationSequence(
-				"You enter a small, dingy store on the outskirts of town to find a lady brewing potions in a cauldron in the corner of the shop. “What do you want, mortal?”, says the lady, who appears to be the owner."))
+				"You enter a small, dingy store on the outskirts of town to find a lady brewing potions in a cauldron in the corner of the shop. 'What do you want, mortal?', says the lady, who appears to be the owner."))
 		.add(new FadeIn());
 		
 	}
@@ -321,7 +321,7 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void WhichTalk() {
 		var node = get(MyNodeLabels.WhichTalk.toString());
-		node.add(new HideDialog()).add(new WalkTo(player,alchemist)).add(new DialogSequence(player, alchemist, List.of("Would you like a cursed book? ~Warning, may be cursed~"),List.of ("Yes","No")));
+		node.add(new HideDialog()).add(new WalkTo(player,alchemist)).add(new DialogSequence(player, alchemist, List.of("Would you like a cursed book? ~Warning. May be cursed~"),List.of ("Yes","No")));
 	}
 	@BuilderMethod
 	public void WhichTalkYes() {
@@ -491,29 +491,29 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void BuyLandBackTalk() {
 		var node = get(MyNodeLabels.BuyTalk.toString());
-		node.add(new DialogSequence(player, king, List.of("Very well, you have earned enough money to buy your land back. Capitalism wins yet again!"), List.of("Continue")));
+		node.add(new DialogSequence(player, king, List.of("Very well. You have earned enough money to buy your land back. Capitalism wins yet again!"), List.of("Continue")));
 		}
 	@BuilderMethod
 	public void BuyLandEnding() {
 		var node = get(MyNodeLabels.BuyEnd.toString());
-		node.add(new NarrationSequence("You return to your farm, living out the rest of your days in peace. The king never dared approach your lands again. In the far future you sit on your porch at sunset, rocking back and fourth, proud to have this clod of earth to call your own." + "The End."));
+		node.add(new NarrationSequence("You return to your farm living out the rest of your days in peace. The king never dared approach your lands again. In the far future you sit on your porch at sunset. You rock in your chair back and forth proud to have this clod of earth to call your own." + "The End."));
 	}
 	@BuilderMethod
 	public void BuyAllLandTalk() {
 		var node = get(MyNodeLabels.BuyAllTalk.toString());
-		node.add(new DialogSequence(player, king, List.of("Really, you would be willing to buy this kingdom off me?"+"Honestly, I never did like being king always... I really just did it for the money."+"Very well I will sell you my kingdom"), List.of("Continue")));
+		node.add(new DialogSequence(player, king, List.of("Really? You would be willing to buy this kingdom off me?"+"Honestly I never did like being king always...I really just did it for the money."+"Very well I will sell you my kingdom"), List.of("Continue")));
 		}
 	@BuilderMethod
 	public void BuyAllLandEnding() {
 		var node = get(MyNodeLabels.BuyAllEnd.toString());
-		node.add(new NarrationSequence("King Bartholomew abdicates his throne, giving you full ownership of the kingdom and all its properties. King Bartholomew leaves, never to be seen again, having spent the rest of his life in a state of quite solitude on a farm in the furthest recesses of the countryside." + "Meanwhile, you are absolutely terrible at running your newly found kindom. Begging and farming were your main areas of expertise. You find yourself wholeheartedly unable to perform the managerial tasks required to be king. Due to your shortcomings, you quickly run the kingdom into anarchy and die unceremoniously of a heart attack due to the stress during a peasant revolt outside your castle." + "The End."));
+		node.add(new NarrationSequence("King Bartholomew abdicates his throne giving you full ownership of the kingdom and all its properties. King Bartholomew leaves never to be seen again. He spends the rest of his life in a state of quiet solitude on a farm in the furthest recesses of the countryside." + "Meanwhile you are absolutely terrible at running your newly found kindom. Begging and farming were your main areas of expertise. You find yourself wholeheartedly unable to perform the managerial tasks required to be king. Due to your shortcomings you quickly run the kingdom into anarchy and die unceremoniously of a heart attack due to the stress during a peasant revolt outside your castle." + "The End."));
 	}
 
 	@BuilderMethod
 	public void KingFightAct() {
 		var node = get(MyNodeLabels.KingFight.toString());
 		node.add(new HideDialog()).add(new Face(king, player)).add(new Draw(king, sword)).add(new Draw(player, sword)).add(new Attack(player, king, true));
-		node.add(new NarrationSequence("You won the fight and defeated the King! Before you coudl kill him he offerd you your land back in exchange for his life. You happily accept."));
+		node.add(new NarrationSequence("You won the fight and defeated the King! Before you could kill him he offered you your land back in exchange for his life. You happily accept."));
 	}
 
 	@BuilderMethod
