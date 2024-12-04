@@ -351,15 +351,34 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void Crossroads() {
 		var node = get(MyNodeLabels.Crossroads.toString());
-		node.add(new HideDialog()).add(new FadeOut()).add(new SetPosition(player,castleCrossroads))
+		node.add(new HideDialog()).add(new FadeOut()).add(new SetPosition(player,Crossroadenter))
 		.add(new FadeIn());
 	}
+
 	
-	//public void Castle() {
-		
-		
-		
-	//}
+	@BuilderMethod
+	public void GuardTalk3() {
+		var node = get(MyNodeLabels.GuardTalk3.toString());
+		node.add(new HideDialog()).add(new DialogSequence(player, gaurd, List.of("Halt stay away from the castle peasant","~50 Coins for bribe~","~100 Health for fight~"),List.of ("Bribe","Fight")));
+	}
+	
+	@BuilderMethod
+	public void GuardBribe3() {
+		var node = get(MyNodeLabels.GuardBribe3.toString());
+		node.add(new HideDialog()).add(new DialogSequence(player, gaurd, List.of("Oooh shiny"),List.of ("Continue")));
+	}
+	@BuilderMethod
+	public void GuardFight3() {
+		var node = get(MyNodeLabels.GuardFight3.toString());
+		node.add(new HideDialog()).add(new DialogSequence(player, gaurd, List.of("ARG"),List.of ("Win","Lose")));
+	}
+	
+	@BuilderMethod
+	public void Castle() {
+		var node = get(MyNodeLabels.Castle.toString());
+		node.add(new HideDialog()).add(new FadeOut()).add(new SetPosition(player,greatHall)).add(new SetPosition(king,throne)).add(new Face(king,player))
+		.add(new FadeIn()).add(new Dance(player));
+	}
 	
 	@BuilderMethod
 	public void DockNar() {
@@ -457,17 +476,17 @@ public class MyNodeBuilder extends NodeBuilder {
 		node.add(new NarrationSequence("You sail off into the sunset. The end"));
 	}
 	
-	@BuilderMethod
-	public void InDaCastle() {
-		var node = get(MyNodeLabels.InCastle.toString());
-		node.add(new HideDialog());
-		}
+	//@BuilderMethod
+	//public void InDaCastle() {
+	//	var node = get(MyNodeLabels.InCastle.toString());
+		//node.add(new HideDialog());
+		//}
 	
 	@BuilderMethod
 	public void TalkingToKing() {
 		var node = get(MyNodeLabels.TalkingToKing.toString());
 		node.add(new Face(king,player));
-		node.add(new DialogSequence(player, king, List.of("Who dares come into the great throne room of the great king, king  Bartholomew the great?!?!" + "State your buisness imediatly or face my wrath!"), List.of("Im here to fight you! This is revenge for rasing my taxes", "Hold on there I just want to buy my land back.($10000)","Im here to buy your whole kingdom($1000000)")));
+		node.add(new DialogSequence(player, king, List.of("Who dares come into the great throne room of the great king, king  Bartholomew the great?!?!" + "State your buisness imediatly or face my wrath!"), List.of("Im here to fight you! This is revenge for rasing my taxes ~500 Health~", "Hold on there I just want to buy my land back.~10000 Coins~","Im here to buy your whole kingdom ~1000000 Coins~")));
 		}
 	@BuilderMethod
 	public void BuyLandBackTalk() {
@@ -500,8 +519,8 @@ public class MyNodeBuilder extends NodeBuilder {
 	@BuilderMethod
 	public void CastleWinning() {
 		var node = get(MyNodeLabels.CastleWin.toString());
-		node.add(new HideNarration());
-		node.add(new ShowCredits());
+		node.add(new HideNarration())
+		.add(new ShowCredits());
 	}
 		
 		

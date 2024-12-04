@@ -76,10 +76,13 @@ public final class MyStoryEntities {
 	public static final Furniture WhichreturnDoor = new Furniture(alchemyShop, FurnitureTypes.Door);
 	public static final Furniture Whichloc = new Furniture(alchemyShop, FurnitureTypes.RightBookcase);
 
+	public static final Furniture throne = new Furniture(greatHall, FurnitureTypes.Throne);
+
 	public static final Furniture Plant = new Furniture(city, FurnitureTypes.Plant);
 	public static final Furniture PortExit = new Furniture(port, FurnitureTypes.Exit);
 	public static final Furniture Bigship = new Furniture(port, FurnitureTypes.BigShip);
-
+	
+	public static final Furniture Crossroadenter = new Furniture(castleCrossroads, FurnitureTypes.WestEnd);
 	public static final Furniture pirateTree = new Furniture(forestPath, FurnitureTypes.WestEnd);
 	public static final Item bird = new Item("Bird", ItemTypes.Apple);
 	public static final Characters parrot = new Characters("Parrot", BodyTypes.F, Clothing.Noble, HairStyle.Long, Colors.Black, 4);

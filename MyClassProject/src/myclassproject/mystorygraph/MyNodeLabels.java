@@ -61,8 +61,8 @@ public enum MyNodeLabels{
 	PirateTree,
 	FindBird,
 	PirateGoodEnding,
+	Castle,
 
-	InCastle,
 	TalkingToKing,
 	BuyTalk,
 	BuyEnd,
